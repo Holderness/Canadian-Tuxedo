@@ -1,4 +1,5 @@
 class ClothingItemsController < ApplicationController
+
   def index
     @clothing_items = current_user.clothing_items
   end
@@ -34,4 +35,5 @@ class ClothingItemsController < ApplicationController
   def clothing_item_params
     params.require(:clothing_item).permit()
   end
+
 end
