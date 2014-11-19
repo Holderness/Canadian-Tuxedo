@@ -1,7 +1,7 @@
 class LooksController < ApplicationController
 
   def index
-    @looks = current_user.looks
+    @looks = Look.all
   end
 
   def new
@@ -10,6 +10,7 @@ class LooksController < ApplicationController
 
   def create
     look = Look.create(look_params)
+    redirect_to look_path(look)
   end
 
   def edit
@@ -19,6 +20,7 @@ class LooksController < ApplicationController
   def update
     look = Look.find(params[:id])
     look.update(look_params)
+    redirect_to look_path(look)
   end
 
   def show
@@ -28,13 +30,14 @@ class LooksController < ApplicationController
   def destroy
     look = Look.find(params[:id])
     look.destroy
+    redirect_to looks_path
   end
 
   private
 
   def look_params
     # This needs to be done
-    params.require(:look).permit()
+    params.require(:look).permit(:name)
   end
 
 end

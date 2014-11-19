@@ -1,0 +1,10 @@
+<h1>Here Is A Look</h1>
+
+<!-- this is where we display the image -->
+
+<h3><%= @look.name %></h3>
+<!-- <h3><%= @look.tags %></h3> -->
+
+<%= button_to("Edit", edit_look_path(@look), method: :get) %>
+
+<%= button_to('Delete', look_path(@look), method: :delete) %>

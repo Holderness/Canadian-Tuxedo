@@ -1,0 +1,8 @@
+<h1>Look Book</h1>
+
+<% @looks.each do |look| %>
+
+<h3><%= link_to look.name, look_path(look) %></h3>
+
+<% end %>
+
