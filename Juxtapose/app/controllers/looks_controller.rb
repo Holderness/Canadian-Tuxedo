@@ -6,10 +6,18 @@ class LooksController < ApplicationController
 
   def new
     @look = Look.new
+    @clothing_items = ClothingItem.all
   end
 
   def create
+    binding.pry
+
     look = Look.create(look_params)
+    @clothing_item_ids = params[:clothing_item_ids]
+    @clothing_item_ids.each do |clothing_item_id|
+      ClothingAssignment.create(look_id: look.id, clothing_item_id: clothing_item_id)
+    end
+
     redirect_to look_path(look)
   end
 
@@ -25,6 +33,7 @@ class LooksController < ApplicationController
 
   def show
     @look = Look.find(params[:id])
+    @clothing_items = @look.clothing_items
   end
 
   def destroy
@@ -38,6 +47,10 @@ class LooksController < ApplicationController
   def look_params
     # This needs to be done
     params.require(:look).permit(:name)
+  end
+
+  def clothing_assignment_params
+    params.require(:clothing_assignment).permit(:look_id, :clothing_item_id)
   end
 
 end
