@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118234541) do
+ActiveRecord::Schema.define(version: 20141119002448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20141118234541) do
   create_table "clothing_assignments", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "clothing_item_id"
+    t.integer  "look_id"
   end
 
   create_table "clothing_items", force: true do |t|
@@ -26,7 +28,40 @@ ActiveRecord::Schema.define(version: 20141118234541) do
     t.datetime "updated_at"
   end
 
+  create_table "clothing_tag_assignments", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "clothing_item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "clothing_tag_assignments", ["clothing_item_id"], name: "index_clothing_tag_assignments_on_clothing_item_id", using: :btree
+  add_index "clothing_tag_assignments", ["tag_id"], name: "index_clothing_tag_assignments_on_tag_id", using: :btree
+
+  create_table "look_tag_assignments", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "look_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "look_tag_assignments", ["look_id"], name: "index_look_tag_assignments_on_look_id", using: :btree
+  add_index "look_tag_assignments", ["tag_id"], name: "index_look_tag_assignments_on_tag_id", using: :btree
+
   create_table "looks", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
