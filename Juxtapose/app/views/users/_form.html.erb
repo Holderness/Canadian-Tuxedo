@@ -1,1 +1,7 @@
-_form.html.erb
+<%= form_for(@user) do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+  <%= f.submit :submit %>
+<% end %>
