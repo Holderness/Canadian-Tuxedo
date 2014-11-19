@@ -1,1 +1,22 @@
-index.html.erb
+<%= form_for @clothing_item do |f| %>
+  <p>
+  	<%= f.label :caption %>
+  	<%= f.text_field :caption %>
+  </p>
+  <p>
+  	<%= f.submit %>
+  </p>
+<% end %>
+
+<%= form_for @clothing_item.tag do |f| %>
+  <p>
+  	<%= f.label :text %>
+  	<%= f.text_field :text %>
+  </p>
+  <p>
+  	<%= f.submit %>
+  </p>
+<% end %>
+
+
+
