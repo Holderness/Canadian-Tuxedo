@@ -1,7 +1,7 @@
 class ClothingItemsController < ApplicationController
 
   def index
-    @clothing_items = current_user.clothing_items
+    @clothing_items = ClothingItem.all
   end
 
   def new
