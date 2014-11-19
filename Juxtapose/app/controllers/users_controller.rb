@@ -30,6 +30,10 @@ class UsersController < ApplicationController
     user.destroy
   end
 
+  def login
+    # handles the erb for logging in
+  end
+
   private
 
   def user_params
