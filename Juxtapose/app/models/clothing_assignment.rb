@@ -1,4 +1,4 @@
 class ClothingAssignment < ActiveRecord::Base
-  belongs_to :looks
-  belongs_to :clothing_items
+  belongs_to :look
+  belongs_to :clothing_item
 end

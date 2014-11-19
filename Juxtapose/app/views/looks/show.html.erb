@@ -3,6 +3,11 @@
 <!-- this is where we display the image -->
 
 <h3><%= @look.name %></h3>
+<% @clothing_items.each do |clothing_item| %>
+
+  <%= clothing_item.caption %>
+
+<% end %>
 <!-- <h3><%= @look.tags %></h3> -->
 
 <%= button_to("Edit", edit_look_path(@look), method: :get) %>

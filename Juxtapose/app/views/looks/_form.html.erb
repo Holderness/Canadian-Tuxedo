@@ -4,6 +4,11 @@
   	<%= f.text_field :name %>
   </p>
   <p>
+  <% @clothing_items.each do |clothing_item| %>
+    <%= check_box_tag "clothing_item_ids[]", clothing_item.id %> <%= clothing_item.caption %>
+  <% end %>
+  </p>
+  <p>
   	<%= f.submit %>
   </p>
 <% end %>
