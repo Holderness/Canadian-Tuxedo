@@ -1,1 +1,18 @@
-index.html.erb
+<h1>
+	Clothing Items
+</h1>
+
+<%= link_to new_clothing_item_path %>
+
+<ul>
+	<% @clothing_items.each do |item| %>
+	<li>
+		<div>
+			<a href="<%= link_to clothing_item_path(item) %>"><%= item.picture %></a>
+			<%= item.caption %>
+			<%= item.tags %>
+		</div>
+	</li>
+	<% end %>
+</ul>
+
