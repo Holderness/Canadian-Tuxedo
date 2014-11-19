@@ -8,8 +8,7 @@
 	<% @clothing_items.each do |item| %>
 	<li>
 		<div>
-			<a href="<%= link_to clothing_item_path(item) %>"><%= item.picture %></a>
-			<%= item.caption %>
+			<a href="<%= link_to clothing_item_path(item) %>"><%= item.caption %></a>			
 			<%= item.tags %>
 		</div>
 	</li>
