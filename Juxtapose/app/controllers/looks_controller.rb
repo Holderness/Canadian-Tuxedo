@@ -33,6 +33,7 @@ class LooksController < ApplicationController
 
   def show
     @look = Look.find(params[:id])
+    binding.pry
     @clothing_items = @look.clothing_items
   end
 
