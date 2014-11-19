@@ -10,6 +10,7 @@ class ClothingItemsController < ApplicationController
 
   def create
     @clothing_item = ClothingItem.create(clothing_item_params)
+    redirect_to clothing_item_path(@clothing_item)
   end
 
   def edit
@@ -19,6 +20,7 @@ class ClothingItemsController < ApplicationController
   def update
     clothing_item = ClothingItem.find(params[:id])
     clothing_item.update(clothing_item_params)
+    redirect_to clothing_item_path(clothing_item)
   end
 
   def show
@@ -28,12 +30,13 @@ class ClothingItemsController < ApplicationController
   def destroy
     clothing_item = ClothingItem.find(params[:id])
     clothing_item.destroy
+    redirect_to clothing_items_path
   end
 
   private
 
   def clothing_item_params
-    params.require(:clothing_item).permit()
+    params.require(:clothing_item).permit(:caption)
   end
 
 end
