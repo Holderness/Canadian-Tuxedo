@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20141119174406) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "caption"
+    t.integer  "user_id"
   end
 
   create_table "clothing_tag_assignments", force: true do |t|
