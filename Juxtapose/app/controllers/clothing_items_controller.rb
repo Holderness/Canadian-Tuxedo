@@ -23,8 +23,15 @@ class ClothingItemsController < ApplicationController
 
   def update
     clothing_item = ClothingItem.find(params[:id])
+    tags_from_server = params[:tags].split(",")
+    tags_from_db = clothing_item.tags.map{|tag| tag.text}
+    deleted_tags = tags_from_db - tags_from_server
+    deleted_tags = deleted_tags.map do |tag|
+      t = Tag.find_by(text: tag)
+      t.id
+    end
     clothing_item.update(clothing_item_params)
-    ClothingTagAssignment.delete(clothing_item)
+    ClothingTagAssignment.where( tag_id: deleted_tags, clothing_item_id: clothing_item.id ).destroy_all
     ClothingTagAssignment.add_tags(params, clothing_item)
 
     redirect_to clothing_item_path(clothing_item)
