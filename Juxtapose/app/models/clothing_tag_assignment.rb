@@ -3,6 +3,7 @@ class ClothingTagAssignment < ActiveRecord::Base
   belongs_to :clothing_item
 
   def self.add_tags(params, clothing_item)
+    binding.pry
     tags_array = params[:tags].split(",")
     tags_array.each do |text|
       text.chomp

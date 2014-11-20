@@ -24,7 +24,8 @@ class ClothingItemsController < ApplicationController
   def update
     clothing_item = ClothingItem.find(params[:id])
     clothing_item.update(clothing_item_params)
-    ClothingTagAssignment.add_tags(params, @clothing_item)
+    ClothingTagAssignment.delete(clothing_item)
+    ClothingTagAssignment.add_tags(params, clothing_item)
 
     redirect_to clothing_item_path(clothing_item)
   end
@@ -43,8 +44,6 @@ class ClothingItemsController < ApplicationController
 
   def clothing_item_params
     params.require(:clothing_item).permit(:image, :caption, :user_id)
-
-    redirect_to clothing_items_path
   end
 
 end

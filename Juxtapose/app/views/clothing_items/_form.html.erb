@@ -72,13 +72,13 @@
       }
     ];
 
-    var $newClothingItem = $('#new_clothing_item');
-    $newClothingItem.submit(function(){
+    var $form = $('form');
+    $form.submit(function(){
       $.each(params, function(i, param){
         $('<input />').attr('type', 'hidden')
         .attr('name', param.name)
         .attr('value', param.value)
-        .appendTo($newClothingItem);
+        .appendTo($form);
       });
     });
   });
