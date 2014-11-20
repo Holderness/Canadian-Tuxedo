@@ -10,6 +10,7 @@ class ClothingItemsController < ApplicationController
   end
 
   def create
+    binding.pry
     @clothing_item = ClothingItem.create(clothing_item_params)
     ClothingTagAssignment.add_tags(params, @clothing_item)
     redirect_to clothing_item_path(@clothing_item)
