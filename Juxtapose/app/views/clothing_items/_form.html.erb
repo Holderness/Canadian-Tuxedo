@@ -1,5 +1,5 @@
 
-<output id="clothing-item-image"></output>
+<output></output>
 
 
 
@@ -20,26 +20,27 @@
 
 
 <script>
-	function handleFileSelect(event) {
-		var file = event.target.files;
-		debugger
 
-		if (file.type.match('image.*')){
-			var reader = new FileReader();
-			reader.onload = (function(theFile){
-				return function(e) {
-					var $output = $('output')
-					var source = e.target.result
-					encodeURI(theFile.name);
-					var $image = $('<img src="'+source+'">')
-					$output.append($image)
-				}
-			})
-			reader.readAsDataURL(file)
-		}
-	}
- $clothingItemImage = $('#clothing-item-image')
- $clothingItemImage.on('change', handleFileSelect)
+	$(function() {
 
+    $current_image = $('#current_image');
+    $clothingItemImage = $('#clothing_item_image');
+    $clothingItemImage.trigger('change');
+    $clothingItemImage.on('change', function(event){
+      var file = event.target.files[0];
+      $current_image.remove();
+      if (file.type.match('image.*')){
+        var reader = new FileReader();
+        reader.onload = (function(theFile){
+          var img = new Image();
+          img.src = theFile.target.result;
+          var $output = $('output');
+          $output.html(img);
+        });
+        reader.readAsDataURL(file);
+      }
+    });
+
+  });
 
 </script>
