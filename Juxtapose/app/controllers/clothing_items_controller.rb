@@ -10,6 +10,7 @@ class ClothingItemsController < ApplicationController
   end
 
   def create
+    binding.pry
     @clothing_item = ClothingItem.create(clothing_item_params)
     ClothingTagAssignment.add_tags(params, @clothing_item)
     redirect_to clothing_item_path(@clothing_item)
@@ -43,8 +44,6 @@ class ClothingItemsController < ApplicationController
 
   def clothing_item_params
     params.require(:clothing_item).permit(:image, :caption, :user_id)
-
-    redirect_to clothing_items_path
   end
 
 end
