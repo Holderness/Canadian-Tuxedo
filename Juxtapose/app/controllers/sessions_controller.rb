@@ -1,9 +1,10 @@
 class SessionsController < ApplicationController
   def login
-    user = User.find_by(username:params[:username])
-    if user && user.authenticate(params[:password])
+    user = User.find_by(username:params[:user][:username])
+    if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      redirect_to root_path
+      redirect_to clothing_items_path
+
     else
       session[:user_id] = nil
       redirect_to root_path

@@ -1,12 +1,12 @@
 class LooksController < ApplicationController
-
+  before_filter :authorize
   def index
-    @looks = Look.all
+    @looks = current_user.looks
   end
 
   def new
     @look = Look.new
-    @clothing_items = ClothingItem.all
+    @clothing_items = current_user.clothing_items
   end
 
   def create
@@ -44,7 +44,7 @@ class LooksController < ApplicationController
 
   def look_params
     # This needs to be done
-    params.require(:look).permit(:name)
+    params.require(:look).permit(:name, :user_id)
   end
 
   def clothing_assignment_params
