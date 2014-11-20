@@ -10,6 +10,7 @@ class ClothingItemsController < ApplicationController
 
   def create
     @clothing_item = ClothingItem.create(clothing_item_params)
+    binding.pry
     redirect_to clothing_item_path(@clothing_item)
   end
 
@@ -36,7 +37,7 @@ class ClothingItemsController < ApplicationController
   private
 
   def clothing_item_params
-    params.require(:clothing_item).permit(:image, :caption, :user_id)
+    params.require(:clothing_item).permit(:image, :caption, :user_id, :tags)
   end
 
 end

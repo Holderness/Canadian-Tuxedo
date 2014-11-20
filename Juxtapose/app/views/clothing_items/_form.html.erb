@@ -15,7 +15,7 @@
 	<%= render partial: 'tag_form' %>
 
   <p>
-  	<%= f.submit %>
+  	<%= f.submit id:"save" %>
   </p>
 <% end %>
 
@@ -25,8 +25,24 @@
 
 	$(function() {
 
-    $current_image = $('#current_image');
-    $clothingItemImage = $('#clothing_item_image');
+    var $text_field = $('#tags');
+    var $submit = $('#add');
+    var tag_array = [];
+
+    $submit.on('click', function(e){
+      e.preventDefault();
+      var text_field_value = $text_field.val();
+      $text_field.val("");
+      var tags_raw = text_field_value.split(",");
+      $(tags_raw).each(function(idx, tag){
+        tag_array.push(tag);
+      });
+
+    });
+
+
+    var $current_image = $('#current_image');
+    var $clothingItemImage = $('#clothing_item_image');
     $clothingItemImage.trigger('change');
     $clothingItemImage.on('change', function(event){
       var file = event.target.files[0];
@@ -42,6 +58,35 @@
         reader.readAsDataURL(file);
       }
     });
+
+    var params = [
+      {
+        name:'tags',
+        value: tag_array
+      }
+    ];
+
+    var $newClothingItem = $('#new_clothing_item');
+    $newClothingItem.submit(function(){
+      $.each(params, function(i, param){
+        $('<input />').attr('type', 'hidden')
+        .attr('name', param.name)
+        .attr('value', param.value)
+        .appendTo($newClothingItem);
+      });
+    });
+
+
+  // $submit = $('#submit');
+  // $submit.on('click', function(e){
+  //   e.preventDefault();
+  //   $.ajax({
+  //     url:'/clothing_items',
+  //     method: 'post',
+  //     data: {tags: tags, }
+  //   });
+  // });
+
 
   });
 
