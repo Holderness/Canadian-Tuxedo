@@ -1,3 +1,8 @@
+
+<output id="clothing-item-image"></output>
+
+
+
 <%= form_for @clothing_item do |f| %>
 
   <%= f.file_field :image %>
@@ -13,3 +18,28 @@
 <% end %>
 
 
+
+<script>
+	function handleFileSelect(event) {
+		var file = event.target.files;
+		debugger
+
+		if (file.type.match('image.*')){
+			var reader = new FileReader();
+			reader.onload = (function(theFile){
+				return function(e) {
+					var $output = $('output')
+					var source = e.target.result
+					encodeURI(theFile.name);
+					var $image = $('<img src="'+source+'">')
+					$output.append($image)
+				}
+			})
+			reader.readAsDataURL(file)
+		}
+	}
+ $clothingItemImage = $('#clothing-item-image')
+ $clothingItemImage.on('change', handleFileSelect)
+
+
+</script>
