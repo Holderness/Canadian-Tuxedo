@@ -3,11 +3,11 @@
 <!-- this is where we display the image -->
 
 <h3><%= @look.name %></h3>
-<% @clothing_items.each do |clothing_item| %>
-
-  <%= clothing_item.caption %>
-
-<% end %>
+<div style="border: 1px solid black">
+	<% @clothing_items.each do |clothing_item| %>
+		<%= image_tag clothing_item.image.url(:thumb) %>
+	<% end %>
+</div>
 <!-- <h3><%= @look.tags %></h3> -->
 
 <%= button_to("Edit", edit_look_path(@look), method: :get) %>

@@ -10,8 +10,6 @@ class LooksController < ApplicationController
   end
 
   def create
-    binding.pry
-
     look = Look.create(look_params)
     @clothing_item_ids = params[:clothing_item_ids]
     @clothing_item_ids.each do |clothing_item_id|
@@ -33,7 +31,6 @@ class LooksController < ApplicationController
 
   def show
     @look = Look.find(params[:id])
-    binding.pry
     @clothing_items = @look.clothing_items
   end
 
