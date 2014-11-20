@@ -4,31 +4,3 @@
   <%= button_tag 'Add Tags', id: 'add' %>
 
 
-
-<script>
-
-	$(function(){
-
-			var $text_field = $('#tags');
-			var $submit = $('#add');
-			var tags = [];
-			var $li = ('<li>');
-
-			$submit.on('click', function(e){
-				debugger
-				e.preventDefault();
-				var text_field_value = $text_field.val();
-				$text_field.val("");
-				var tags_raw = text_field_value.split(",");
-				$(tags_raw).each(function(idx, tag){
-					tags.push(tag);
-					var $li.text(tag);
-					$('.show-tags').append($li);
-				});
-
-			});
-
-	});
-
-
-</script>
