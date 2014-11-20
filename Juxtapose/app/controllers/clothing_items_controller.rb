@@ -1,7 +1,7 @@
 class ClothingItemsController < ApplicationController
-
+  before_filter :authorize
   def index
-    @clothing_items = ClothingItem.all
+    @clothing_items = current_user.clothing_items
   end
 
   def new
@@ -36,7 +36,7 @@ class ClothingItemsController < ApplicationController
   private
 
   def clothing_item_params
-    params.require(:clothing_item).permit(:image, :caption)
+    params.require(:clothing_item).permit(:image, :caption, :user_id)
   end
 
 end

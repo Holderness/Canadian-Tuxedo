@@ -2,10 +2,11 @@
   <p>
   	<%= f.label :name %>
   	<%= f.text_field :name %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   </p>
   <p>
   <% @clothing_items.each do |clothing_item| %>
-    <%= check_box_tag "clothing_item_ids[]", clothing_item.id %> <%= clothing_item.caption %>
+    <%= check_box_tag "clothing_item_ids[]", clothing_item.id %> <%= image_tag clothing_item.image.url(:thumb) %>
   <% end %>
   </p>
   <p>

@@ -1,7 +1,7 @@
 <%= form_for @clothing_item do |f| %>
 
   <%= f.file_field :image %>
-  
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <p>
   	<%= f.label :caption %>
   	<%= f.text_field :caption %>
