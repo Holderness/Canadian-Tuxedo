@@ -10,7 +10,6 @@ class ClothingItemsController < ApplicationController
   end
 
   def create
-    binding.pry
     @clothing_item = ClothingItem.create(clothing_item_params)
     ClothingTagAssignment.add_tags(params, @clothing_item)
     redirect_to clothing_item_path(@clothing_item)
@@ -23,6 +22,7 @@ class ClothingItemsController < ApplicationController
   end
 
   def update
+    binding.pry
     clothing_item = ClothingItem.find(params[:id])
     tags_from_server = params[:tags].split(",")
     tags_from_db = clothing_item.tags.map{|tag| tag.text}

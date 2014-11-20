@@ -23,10 +23,23 @@
 
 <script>
 
+  
+
 	$(function() {
+
+    var tag_array = [];
+
+    $('li').each(function(idx, tag){
+      // var re = new RegExp("\w+[\w]");
+      var unformatted_text = $(tag).text();
+      var text = unformatted_text.match(/\w+[\w]/);
+      tag_array.push(text[0]);
+      debugger;
+    });
+
+
     var $text_field = $('#tags');
     var $submit = $('#add');
-    var tag_array = [];
     var li = ("<li>");
 
     $submit.on('click', function(e){
@@ -35,17 +48,21 @@
       $text_field.val("");
       var tags_raw = text_field_value.split(",");
       $(tags_raw).each(function(idx, tag){
+        debugger;
         tag_array.push(tag);
       }); 
     showTags();
     });
 
+
+
+
     function showTags() { 
-      $('.show-tags').empty();
-      $(tag_array).each(function(idx, tag){
-        var lis = $(li).text(tag);
-        $('.show-tags').append(lis);            
-      });
+     $('.show-tags').empty();
+     $(tag_array).each(function(idx, tag){
+       var lis = $(li).text(tag);
+       $('.show-tags').append(lis);            
+     });
     }
 
     var $current_image = $('#current_image');

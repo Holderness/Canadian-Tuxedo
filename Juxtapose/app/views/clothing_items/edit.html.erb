@@ -3,24 +3,9 @@
 
 <ul class="show-tags">
 	<% @tags.each do |tag| %>
-	<li>
-		<%= tag.text %>
-	</li>
+	<li><%= tag.text %></li>
 	<% end %>
 </ul>
-
-	<script>
-		$(function() { 
-			$(li).each(function(idx, tag){
-				$(tag_array).push(tag)
-			});
-       $('.show-tags').empty();
-       $(tag_array).each(function(idx, tag){
-         var lis = $(li).text(tag);
-         $('.show-tags').append(lis);            
-       });
-     }
- </script>
 
 
 
