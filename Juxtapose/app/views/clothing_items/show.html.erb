@@ -1,6 +1,9 @@
 <h1>Here Is A Clothing Item</h1>
 
-<!-- this is where we display the image -->
+<div>
+<%= image_tag @clothing_item.image.url(:medium) %>
+<%= image_tag @clothing_item.image.url(:thumb) %>
+</div>
 
 <h3><%= @clothing_item.caption %></h3>
 <!-- <h3><%= @clothing_item.tags %></h3> -->
