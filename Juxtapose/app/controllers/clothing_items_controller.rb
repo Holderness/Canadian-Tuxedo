@@ -32,6 +32,7 @@ class ClothingItemsController < ApplicationController
 
   def show
     @clothing_item = ClothingItem.find(params[:id])
+    @tags = @clothing_item.tags
   end
 
   def destroy

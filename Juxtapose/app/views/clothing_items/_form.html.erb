@@ -24,7 +24,6 @@
 <script>
 
 	$(function() {
-
     var $text_field = $('#tags');
     var $submit = $('#add');
     var tag_array = [];
@@ -37,15 +36,17 @@
       var tags_raw = text_field_value.split(",");
       $(tags_raw).each(function(idx, tag){
         tag_array.push(tag);
-      });  
+      }); 
+    showTags();
+    });
+
+    function showTags() { 
       $('.show-tags').empty();
       $(tag_array).each(function(idx, tag){
         var lis = $(li).text(tag);
         $('.show-tags').append(lis);            
       });
-
-    });
-
+    }
 
     var $current_image = $('#current_image');
     var $clothingItemImage = $('#clothing_item_image');
