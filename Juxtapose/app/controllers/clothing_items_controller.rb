@@ -36,7 +36,7 @@ class ClothingItemsController < ApplicationController
   private
 
   def clothing_item_params
-    params.require(:clothing_item).permit(:caption)
+    params.require(:clothing_item).permit(:image, :caption)
   end
 
 end

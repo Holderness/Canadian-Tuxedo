@@ -7,6 +7,5 @@ class User < ActiveRecord::Base
   has_many :looks
   has_many :comments
   has_many :votes
-  has_attached_file :clothing_item, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-  validates_attachment_content_type :clothing_item, :content_type => /\Aimage\/.*\Z/
+
 end
