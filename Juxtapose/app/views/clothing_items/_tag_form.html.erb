@@ -1,0 +1,30 @@
+
+
+<%= form_tag('/clothing-tags') do %>
+  <%= text_field_tag 'tags' %>
+  <%= submit_tag 'Add Tags', id: 'add'%>
+<% end %> 
+
+
+<script>
+	$(function(){
+
+			var $text_field = $('#tags');
+			var $submit = $('#add');
+			var tags = [];
+
+			$submit.on('click', function(e){
+				e.preventDefault();
+				var text_field_value = $text_field.val();
+				$text_field.val("");
+				var tags_raw = text_field_value.split(",");
+				$(tags_raw).each(function(idx, tag){
+					tags.push(tag);
+				});
+
+			});
+
+	});
+
+
+</script>
