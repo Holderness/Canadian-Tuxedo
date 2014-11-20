@@ -1,3 +1,10 @@
 <h1>edit</h1>
 
+<h3><%= @look.name %></h3>
+<div style="border: 1px solid black">
+  <% @look_clothing_items.each do |clothing_item| %>
+    <%= image_tag clothing_item.image.url(:thumb) %>
+  <% end %>
+</div>
+
 <%= render partial: 'form' %>

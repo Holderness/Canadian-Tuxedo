@@ -21,6 +21,8 @@ class LooksController < ApplicationController
 
   def edit
     @look = Look.find(params[:id])
+    @look_clothing_items = @look.clothing_items
+    @clothing_items = current_user.clothing_items
   end
 
   def update
