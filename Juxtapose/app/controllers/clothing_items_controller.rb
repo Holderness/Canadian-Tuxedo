@@ -22,7 +22,6 @@ class ClothingItemsController < ApplicationController
   end
 
   def update
-    binding.pry
     clothing_item = ClothingItem.find(params[:id])
     tags_from_server = params[:tags].split(",")
     tags_from_db = clothing_item.tags.map{|tag| tag.text}

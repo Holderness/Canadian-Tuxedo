@@ -11,7 +11,14 @@
   	<%= f.label :caption %>
   	<%= f.text_field :caption %>
   </p>
-  <ul class="show-tags"></ul>
+  <ul class="show-tags">
+    <% @tags.each do |tag| %>
+    <li class="tag">
+      <%= tag.text %>
+      <button>&times</button>
+    </li>
+    <% end %>
+  </ul>
 	<%= render partial: 'tag_form' %>
 
   <p>
@@ -23,24 +30,42 @@
 
 <script>
 
-  
+  var tag_array = [];
+
+  $(document).on('click','.tag button',function(){
+    var unformatted_text = $(this).parent().text();
+    var text = unformatted_text.match(/\w+[\w]/);
+    var index = tag_array.indexOf(text[0]);
+    tag_array.splice(index, 1);
+    showTags();
+  });
+
+  function showTags() { 
+    $('.show-tags').empty();
+    $(tag_array).each(function(idx, tag){
+      var $li = $("<li>");
+      var $lis = $li.text(tag);
+      $lis.attr('class', "tag");
+      var $button = $('<button>&times</button>');
+      $lis.append($button);
+      $('.show-tags').append($lis);   
+    });
+  }
 
 	$(function() {
 
-    var tag_array = [];
+
 
     $('li').each(function(idx, tag){
       // var re = new RegExp("\w+[\w]");
       var unformatted_text = $(tag).text();
       var text = unformatted_text.match(/\w+[\w]/);
       tag_array.push(text[0]);
-      debugger;
     });
 
 
     var $text_field = $('#tags');
     var $submit = $('#add');
-    var li = ("<li>");
 
     $submit.on('click', function(e){
       e.preventDefault();
@@ -48,22 +73,11 @@
       $text_field.val("");
       var tags_raw = text_field_value.split(",");
       $(tags_raw).each(function(idx, tag){
-        debugger;
         tag_array.push(tag);
       }); 
     showTags();
     });
 
-
-
-
-    function showTags() { 
-     $('.show-tags').empty();
-     $(tag_array).each(function(idx, tag){
-       var lis = $(li).text(tag);
-       $('.show-tags').append(lis);            
-     });
-    }
 
     var $current_image = $('#current_image');
     var $clothingItemImage = $('#clothing_item_image');
@@ -99,6 +113,9 @@
         .appendTo($form);
       });
     });
+
+
+
   });
 
 </script>
