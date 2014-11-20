@@ -10,6 +10,7 @@ class ClothingItemsController < ApplicationController
   end
 
   def create
+    binding.pry
     @clothing_item = ClothingItem.create(clothing_item_params)
     ClothingTagAssignment.add_tags(params, @clothing_item)
     redirect_to clothing_item_path(@clothing_item)
@@ -23,14 +24,23 @@ class ClothingItemsController < ApplicationController
 
   def update
     clothing_item = ClothingItem.find(params[:id])
+    tags_from_server = params[:tags].split(",")
+    tags_from_db = clothing_item.tags.map{|tag| tag.text}
+    deleted_tags = tags_from_db - tags_from_server
+    deleted_tags = deleted_tags.map do |tag|
+      t = Tag.find_by(text: tag)
+      t.id
+    end
     clothing_item.update(clothing_item_params)
-    ClothingTagAssignment.add_tags(params, @clothing_item)
+    ClothingTagAssignment.where( tag_id: deleted_tags, clothing_item_id: clothing_item.id ).destroy_all
+    ClothingTagAssignment.add_tags(params, clothing_item)
 
     redirect_to clothing_item_path(clothing_item)
   end
 
   def show
     @clothing_item = ClothingItem.find(params[:id])
+    @tags = @clothing_item.tags
   end
 
   def destroy
@@ -43,8 +53,6 @@ class ClothingItemsController < ApplicationController
 
   def clothing_item_params
     params.require(:clothing_item).permit(:image, :caption, :user_id)
-
-    redirect_to clothing_items_path
   end
 
 end
