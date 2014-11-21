@@ -1,0 +1,33 @@
+<h1> Discover </h1>
+
+<% @looks.each do |look| %>
+<ul id="<%= look.id %>">
+  <% look.clothing_items.each do |clothing_item| %>
+    <li><%= image_tag clothing_item.image.url(:medium) %></li>
+  <% end %>
+  <button class="vote-yes">Vote Yes</button>
+  <button class="vote-no">Vote No</button>
+</ul>
+<% end %>
+
+
+<script>
+  $(function(){
+    var $voteYes = $('.vote-yes');
+    var $voteNo = $('.vote-no');
+
+    $voteYes.on('click', function(){
+      var vote = 1;
+      var lookID = $(this).parent().attr('id');
+      $.ajax({
+        method: 'post',
+        url: 'gallery',
+        data:{vote: vote, look_id: lookID},
+        success: function(){
+          console.log('it worked');
+          console.log(this);
+        }
+      });
+    });
+  });
+</script>

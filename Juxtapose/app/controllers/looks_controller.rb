@@ -11,7 +11,7 @@ class LooksController < ApplicationController
 
   def create
     look = Look.create(look_params)
-    @tags = look.tags 
+    @tags = look.tags
     @clothing_item_ids = params[:clothing_item_ids]
     @clothing_item_ids.each do |clothing_item_id|
       ClothingAssignment.create(look_id: look.id, clothing_item_id: clothing_item_id)
@@ -22,7 +22,7 @@ class LooksController < ApplicationController
 
   def edit
     @look = Look.find(params[:id])
-    @tags = @look.tags 
+    @tags = @look.tags
     @look_clothing_items = @look.clothing_items
     @clothing_items = current_user.clothing_items
   end
