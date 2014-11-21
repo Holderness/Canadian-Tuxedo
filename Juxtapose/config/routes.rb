@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/gallery' => 'votes#gallery_vote'
   get '/login' => 'users#login', as: 'login'
   post '/login' => 'sessions#login'
-  delete '/logout' => 'sessions#logout'
+  get '/logout' => 'sessions#logout'
   get '/tags/clothing_items/:id' => 'tags#show_clothing'
   get '/tags/looks/:id' => 'tags#show_looks'
   root 'users#login'
