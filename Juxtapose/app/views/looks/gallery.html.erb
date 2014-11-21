@@ -12,22 +12,29 @@
 
 
 <script>
+  function Vote(value){
+    var vote = value;
+    var lookID = $(this).parent().attr('id');
+    $.ajax({
+      method: 'post',
+      url: 'gallery',
+      data:{vote: vote, look_id: lookID},
+      success: function(){
+        console.log('it worked');
+        console.log(this);
+      }
+    });
+  }
+
   $(function(){
     var $voteYes = $('.vote-yes');
     var $voteNo = $('.vote-no');
 
     $voteYes.on('click', function(){
-      var vote = 1;
-      var lookID = $(this).parent().attr('id');
-      $.ajax({
-        method: 'post',
-        url: 'gallery',
-        data:{vote: vote, look_id: lookID},
-        success: function(){
-          console.log('it worked');
-          console.log(this);
-        }
-      });
+      Vote(1);
+    });
+    $voteNo.on('click', function(){
+      Vote(-1);
     });
   });
 </script>
