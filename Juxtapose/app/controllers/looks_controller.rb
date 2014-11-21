@@ -29,7 +29,9 @@ class LooksController < ApplicationController
   end
 
   def update
+    binding.pry
     look = Look.find(params[:id])
+    # update tags
     tags_from_server = params[:tags].split(",")
     tags_from_db = look.tags.map{|tag| tag.text}
     deleted_tags = tags_from_db - tags_from_server
@@ -40,6 +42,13 @@ class LooksController < ApplicationController
     look.update(look_params)
     LookTagAssignment.where( tag_id: deleted_tags, look_id: look.id ).destroy_all
     LookTagAssignment.add_tags(params, look)
+    # update clothing items
+    clothing_item_ids = params[:clothing_item_ids]
+    clothing_item_ids.each { |id| ClothingAssignment.create(clothing_item_id: id, look_id: look.id) } if clothing_item_ids
+    clothing_items_delete = params[:clothing_items_delete].split(",")
+    clothing_items_delete.each do |item|
+      ClothingAssignment.find_by(clothing_item_id: item, look_id: look.id).destroy
+    end
     redirect_to look_path(look)
   end
 
