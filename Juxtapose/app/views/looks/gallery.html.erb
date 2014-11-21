@@ -12,16 +12,15 @@
 
 
 <script>
-  function Vote(value){
+  function Vote(value, context){
     var vote = value;
-    var lookID = $(this).parent().attr('id');
+    var lookID = $(context).parent().attr('id');
     $.ajax({
       method: 'post',
       url: 'gallery',
       data:{vote: vote, look_id: lookID},
       success: function(){
         console.log('it worked');
-        console.log(this);
       }
     });
   }
@@ -31,10 +30,10 @@
     var $voteNo = $('.vote-no');
 
     $voteYes.on('click', function(){
-      Vote(1);
+      Vote(1, this);
     });
     $voteNo.on('click', function(){
-      Vote(-1);
+      Vote(-1, this);
     });
   });
 </script>
