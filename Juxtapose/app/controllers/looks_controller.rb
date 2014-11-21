@@ -44,6 +44,10 @@ class LooksController < ApplicationController
     redirect_to looks_path
   end
 
+  def gallery
+    @looks = Look.all
+  end
+
   private
 
   def look_params
