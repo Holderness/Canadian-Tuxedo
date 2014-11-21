@@ -35,10 +35,12 @@
               if(voteValue == 1){
                 $(look).find('.vote-no').removeClass('no');
                 $(look).find('.vote-yes').toggleClass('yes');
-              }
-              if (voteValue == -1) {
+              } else if (voteValue == -1) {
                 $(look).find('.vote-yes').removeClass('yes');
                 $(look).find('.vote-no').toggleClass('no');
+              }else {
+                $(look).find('.vote-yes').removeClass('yes');
+                $(look).find('.vote-no').removeClass('no');
               }
             }
           }
