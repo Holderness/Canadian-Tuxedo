@@ -1,15 +1,121 @@
+<output></output>
+
 <%= form_for @look do |f| %>
   <p>
   	<%= f.label :name %>
   	<%= f.text_field :name %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
   </p>
+
   <p>
   <% @clothing_items.each do |clothing_item| %>
     <%= check_box_tag "clothing_item_ids[]", clothing_item.id %> <%= image_tag clothing_item.image.url(:thumb) %>
   <% end %>
   </p>
+
+  <ul class="show-tags">
+    <% @tags.each do |tag| %>
+    <li class="tag">
+      <%= tag.text %>
+      <button>&times</button>
+    </li>
+    <% end %>
+  </ul>
+
+  <%= render partial: 'tag_form' %>
+
   <p>
   	<%= f.submit %>
   </p>
 <% end %>
+
+
+<script>
+
+  var tag_array = [];
+
+  $(document).on('click','.tag button',function(){
+    var unformatted_text = $(this).parent().text();
+    var text = unformatted_text.match(/\w+[\w]/);
+    var index = tag_array.indexOf(text[0]);
+    tag_array.splice(index, 1);
+    showTags();
+  });
+
+  function showTags() { 
+    $('.show-tags').empty();
+    $(tag_array).each(function(idx, tag){
+      var $li = $("<li>");
+      var $lis = $li.text(tag);
+      $lis.attr('class', "tag");
+      var $button = $('<button>&times</button>');
+      $lis.append($button);
+      $('.show-tags').append($lis);   
+    });
+  }
+
+  $(function() {
+
+    $('li').each(function(idx, tag){
+      // var re = new RegExp("\w+[\w]");
+      var unformatted_text = $(tag).text();
+      var text = unformatted_text.match(/\w+[\w]/);
+      tag_array.push(text[0]);
+    });
+
+
+    var $text_field = $('#tags');
+    var $submit = $('#add');
+
+    $submit.on('click', function(e){
+      e.preventDefault();
+      var text_field_value = $text_field.val();
+      $text_field.val("");
+      var tags_raw = text_field_value.split(",");
+      $(tags_raw).each(function(idx, tag){
+        tag_array.push(tag);
+      }); 
+    showTags();
+    });
+
+
+    var $current_image = $('#current_image');
+    var $lookImage = $('#look_image');
+    $lookImage.trigger('change');
+    $lookImage.on('change', function(event){
+      var file = event.target.files[0];
+      $current_image.remove();
+      if (file.type.match('image.*')){
+        var reader = new FileReader();
+        reader.onload = (function(theFile){
+          var img = new Image();
+          img.src = theFile.target.result;
+          var $output = $('output');
+          $output.html(img);
+        });
+        reader.readAsDataURL(file);
+      }
+    });
+
+    var params = [
+      {
+        name:'tags',
+        value: tag_array
+      }
+    ];
+
+    var $form = $('form');
+    $form.submit(function(){
+      $.each(params, function(i, param){
+        $('<input />').attr('type', 'hidden')
+        .attr('name', param.name)
+        .attr('value', param.value)
+        .appendTo($form);
+      });
+    });
+
+
+
+  });
+
+</script>
