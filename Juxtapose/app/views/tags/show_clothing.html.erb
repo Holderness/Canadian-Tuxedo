@@ -1,0 +1,10 @@
+<h1><%= @tag.text %></h1>
+<ul>
+  <% @clothing_items.each do |item| %>
+    <li>
+      <%=link_to(item) do %>
+        <%= image_tag item.image.url(:medium)%>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

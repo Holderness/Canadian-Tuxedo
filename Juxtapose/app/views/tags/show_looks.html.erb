@@ -1,0 +1,14 @@
+<h1><%= @tag.text %></h1>
+<ul>
+  <% @looks.each do |look| %>
+    <li>
+      <%=link_to(look) do %>
+        <ul>
+          <% look.clothing_items.each do |item| %>
+            <li><%= image_tag item.image.url(:thumb) %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
