@@ -31,7 +31,7 @@
 
 
 <script>
-
+// edit tags
   var tag_array = [];
 
   $(document).on('click','.tag button',function(){
@@ -78,6 +78,13 @@
     showTags();
     });
 
+    var clothes_array = [];
+    var $buttons = $('button');
+    $buttons.on('click', function(){
+      var id = $(this).parent().attr('id');
+      clothes_array.push(id);
+    });
+
 
     var $current_image = $('#current_image');
     var $lookImage = $('#look_image');
@@ -101,6 +108,10 @@
       {
         name:'tags',
         value: tag_array
+      },
+      {
+        name: 'clothing_items_delete',
+        value: clothes_array
       }
     ];
 
@@ -114,8 +125,7 @@
       });
     });
 
-
-
   });
+
 
 </script>
