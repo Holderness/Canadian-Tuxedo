@@ -14,9 +14,16 @@ class VotesController < ApplicationController
     respond_to do |format|
       format.json {render :nothing => true}
     end
+
   end
 
 
+  def get_votes
+    votes = current_user.votes
+    respond_to do |format|
+      format.json { render :json => votes}
+    end
+  end
 
 
 end

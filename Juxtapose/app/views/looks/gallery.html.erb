@@ -1,7 +1,7 @@
 <h1> Discover </h1>
 
 <% @looks.each do |look| %>
-<ul id="<%= look.id %>">
+<ul class="look" id="<%= look.id %>">
   <% look.clothing_items.each do |clothing_item| %>
     <li><%= image_tag clothing_item.image.url(:medium) %></li>
   <% end %>
@@ -12,6 +12,42 @@
 
 
 <script>
+  var $looks;
+  var $voteYes;
+  var $voteNo;
+
+  function loadVotes(){
+    $.ajax({
+      method: 'get',
+      url: '/votes',
+      dataType: 'JSON',
+      success: function(votes){
+        console.log("load works");
+        console.log(votes);
+        $looks = $('.look');
+        $looks.each(function(idx, look){
+          var lookID = look.id;
+          for (var i = 0; i < votes.length; i++) {
+            var voteLookID = votes[i].look_id;
+            if(lookID == voteLookID){
+              $(look).find('.vote-yes').removeClass('yes');
+              var voteValue = votes[i].vote;
+              if(voteValue == 1){
+                $(look).find('.vote-no').removeClass('no');
+                $(look).find('.vote-yes').toggleClass('yes');
+              }
+              if (voteValue == -1) {
+                $(look).find('.vote-yes').removeClass('yes');
+                $(look).find('.vote-no').toggleClass('no');
+              }
+            }
+          }
+        });
+
+      }
+    });
+  }
+
   function Vote(value, context){
     var vote = value;
     var lookID = $(context).parent().attr('id');
@@ -19,15 +55,21 @@
       method: 'post',
       url: 'gallery',
       data:{vote: vote, look_id: lookID},
-      success: function(){
+      done: function(){
+        loadVotes();
         console.log('it worked');
       }
-    });
+    }).done(loadVotes());
   }
 
   $(function(){
+
+
+
     var $voteYes = $('.vote-yes');
     var $voteNo = $('.vote-no');
+
+    loadVotes();
 
     $voteYes.on('click', function(){
       Vote(1, this);
