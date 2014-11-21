@@ -12,7 +12,9 @@
 <ul class="show-tags">
 	<% @tags.each do |tag| %>
 	<li>
-		<%= tag.text %>
+    <a href="/tags/looks/<%=tag.id%>">
+		  <%= tag.text %>
+    </a>
 	</li>
 	<% end %>
 </ul>

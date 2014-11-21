@@ -8,7 +8,9 @@
 	<% @clothing_items.each do |item| %>
 	<li>
 		<div>
-			<%= image_tag item.image.url(:medium) %>
+			<%=link_to(item) do %>
+			  <%= image_tag item.image.url(:medium)%>
+			<% end %>
 			<%= image_tag item.image.url(:thumb) %>
 			<%= item.caption %>			
 			

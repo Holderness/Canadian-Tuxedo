@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   get '/login' => 'users#login', as: 'login'
   post '/login' => 'sessions#login'
   delete '/logout' => 'sessions#logout'
+  get '/tags/clothing_items/:id' => 'tags#show_clothing'
+  get '/tags/looks/:id' => 'tags#show_looks'
   root 'users#login'
 end

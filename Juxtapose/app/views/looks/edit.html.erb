@@ -5,14 +5,9 @@
   <% @look_clothing_items.each do |clothing_item| %>
   	<div id="<%= clothing_item.id %>">
     	<%= image_tag clothing_item.image.url(:thumb), :class => "look-image" %>
-    	<button>&times</button>
+    	<button class="delete">&times</button>
   	</div>
   <% end %>
 </div>
 
 <%= render partial: 'form' %>
-
-<script>
-	
-
-</script>
