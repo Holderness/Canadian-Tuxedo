@@ -63,7 +63,7 @@ class LooksController < ApplicationController
     look = Look.find(params[:id])
     look.destroy
     LookTagAssignment.delete_tags(look)
-    redirect_to looks_path()
+    redirect_to looks_path
   end
 
   def gallery

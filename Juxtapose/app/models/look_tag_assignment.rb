@@ -25,8 +25,6 @@ class LookTagAssignment < ActiveRecord::Base
       tag_assignments_ids << tag_assignment.id
     end
     LookTagAssignment.destroy(tag_assignments_ids)
-
-    redirect_to looks_path
   end
 
 end
