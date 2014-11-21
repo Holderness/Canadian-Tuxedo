@@ -29,8 +29,8 @@
           var lookID = look.id;
           for (var i = 0; i < votes.length; i++) {
             var voteLookID = votes[i].look_id;
+            debugger
             if(lookID == voteLookID){
-              $(look).find('.vote-yes').removeClass('yes');
               var voteValue = votes[i].vote;
               if(voteValue == 1){
                 $(look).find('.vote-no').removeClass('no');
