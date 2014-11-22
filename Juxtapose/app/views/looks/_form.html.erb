@@ -1,5 +1,3 @@
-<output></output>
-
 <%= form_for @look do |f| %>
   <p>
   	<%= f.label :name %>
@@ -7,7 +5,7 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
   </p>
 
-  <p>
+  <p class="clothing_items">
   <% @clothing_items.each do |clothing_item| %>
     <%= check_box_tag "clothing_item_ids[]", clothing_item.id %><%= image_tag clothing_item.image.url(:thumb) %>
   <% end %>
@@ -33,6 +31,9 @@
 <script>
 // edit tags
   var tag_array = [];
+  var clothes_array;
+
+  var $clothing_items;
 
   $(document).on('click','.tag a',function(e){
     e.preventDefault();
@@ -55,7 +56,28 @@
     });
   }
 
+  function showClothes() {
+    $clothing_items.empty();
+    $.ajax({
+      url: '/looks/<%=current_user.id %>/edit',
+      method: 'get',
+      data: {deleted_clothes: clothes_array},
+      dataType: 'JSON',
+      success: function(data){
+        console.dir(data);
+        $(data).each(function(idx, clothing_item){
+          $checkbox = $('<input type="checkbox" name="clothing_item_ids[]" value="'+ clothing_item.id + '"</input>');
+          $img = $('<img src="'+clothing_item.clothing_image_url+'"</img>');
+          $clothing_items.append($checkbox);
+          $clothing_items.append($img);
+        });
+      }
+    });
+  }
+
   $(function() {
+
+    $clothing_items = $('.clothing_items');
 
 
     $('li').each(function(idx, tag){
@@ -85,13 +107,14 @@
     showTags();
     });
 
-    var clothes_array = [];
+    clothes_array = [];
     var $del = $('.look a');
+
     $del.on('click', function(){
       var id = $(this).parent().attr('id');
       clothes_array.push(id);
       $(this).parent().remove();
-
+      showClothes();
     });
 
     var params = [

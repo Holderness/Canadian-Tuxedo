@@ -25,7 +25,22 @@ class LooksController < ApplicationController
     @look = Look.find(params[:id])
     @tags = @look.tags
     @look_clothing_items = @look.clothing_items
+    deleted_clothes_ids = params[:deleted_clothes]
+    if deleted_clothes_ids
+      deleted_clothes = deleted_clothes_ids.map do |clothing_id|
+        ClothingItem.find(clothing_id)
+      end
+    end
     @clothing_items = current_user.clothing_items - @look_clothing_items
+
+    @clothing_items += deleted_clothes if deleted_clothes
+
+
+    respond_to do |format|
+      format.html
+      format.json {render :json => @clothing_items.to_json(:methods => [:clothing_image_url])}
+    end
+
   end
 
   def update
@@ -42,9 +57,13 @@ class LooksController < ApplicationController
     LookTagAssignment.where( tag_id: deleted_tags, look_id: look.id ).destroy_all
     LookTagAssignment.add_tags(params, look)
     # update clothing items
-    clothing_item_ids = params[:clothing_item_ids]
-    clothing_item_ids.each { |id| ClothingAssignment.create(clothing_item_id: id, look_id: look.id) } if clothing_item_ids
-    clothing_items_delete = params[:clothing_items_delete].split(",")
+    clothing_items_create_ids = params[:clothing_item_ids]
+    binding.pry
+    clothing_items_delete_ids = params[:clothing_items_delete].split(",")
+    clothing_items_create = clothing_items_create_ids - clothing_items_delete_ids || []
+    clothing_items_delete = clothing_items_delete_ids - clothing_items_create_ids || []
+        binding.pry
+    clothing_items_create.each { |id| ClothingAssignment.create(clothing_item_id: id, look_id: look.id) } if clothing_items_create
     if clothing_items_delete
       clothing_items_delete.each do |item|
         ClothingAssignment.find_by(clothing_item_id: item, look_id: look.id).destroy
