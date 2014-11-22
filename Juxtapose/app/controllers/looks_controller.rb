@@ -25,7 +25,8 @@ class LooksController < ApplicationController
     @look = Look.find(params[:id])
     @tags = @look.tags
     @look_clothing_items = @look.clothing_items
-    @clothing_items = current_user.clothing_items
+    @clothing_items = current_user.clothing_items- @look_clothing_items
+    binding.pry
   end
 
   def update
