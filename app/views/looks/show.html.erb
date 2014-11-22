@@ -1,0 +1,25 @@
+<h1>Here Is A Look</h1>
+
+
+<h3><%= @look.name %></h3>
+<div style="border: 1px solid black">
+	<% @clothing_items.each do |clothing_item| %>
+		<%= image_tag clothing_item.image.url(:thumb) %>
+	<% end %>
+</div>
+<!-- <h3><%= @look.tags %></h3> -->
+
+<ul class="show-tags">
+	<% @tags.each do |tag| %>
+	<li>
+    <a href="/tags/looks/<%=tag.id%>">
+		  <%= tag.text %>
+    </a>
+	</li>
+	<% end %>
+</ul>
+
+
+<%= button_to("Edit", edit_look_path(@look), method: :get) %>
+
+<%= button_to('Delete', look_path(@look), method: :delete) %>

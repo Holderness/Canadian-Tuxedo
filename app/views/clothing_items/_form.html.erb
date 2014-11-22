@@ -1,0 +1,127 @@
+
+<output></output>
+
+
+
+<%= form_for @clothing_item do |f| %>
+
+  <%= f.file_field :image %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <p>
+  	<%= f.label :caption %>
+  	<%= f.text_field :caption %>
+  </p>
+  <ul class="show-tags">
+    <% @tags.each do |tag| %>
+    <li class="tag">
+      <%= tag.text %>
+      <a href='#'>&times</a>
+    </li>
+    <% end %>
+  </ul>
+	<%= render partial: 'tag_form' %>
+
+  <p>
+  	<%= f.submit id:"save" %>
+  </p>
+<% end %>
+
+
+
+<script>
+
+  var tag_array = [];
+
+  $(document).on('click','.tag a',function(e){
+    e.preventDefault();
+    var unformatted_text = $(this).parent().text();
+    var text = unformatted_text.match(/\w+.*[\w]/);
+    var index = tag_array.indexOf(text[0]);
+    tag_array.splice(index, 1);
+    showTags();
+  });
+
+  function showTags() { 
+    $('.show-tags').empty();
+    $(tag_array).each(function(idx, tag){
+      var $li = $("<li>");
+      var $lis = $li.text(tag);
+      $lis.attr('class', "tag");
+      var $a = $('<a href="#"">&times</a>');
+      $lis.append($a);
+      $('.show-tags').append($lis);   
+    });
+  }
+
+	$(function() {
+
+
+
+    $('li').each(function(idx, tag){
+      var unformatted_text = $(tag).text();
+      var text = unformatted_text.match(/\w+.*[\w]/);
+      tag_array.push(text[0]);
+    });
+
+
+    var $text_field = $('#tags');
+    var $submit = $('#add');
+
+    $text_field.on('keypress', function(e){
+      if (e.keyCode === 13) {
+        $submit.trigger('click');
+      }
+    });
+
+    $submit.on('click', function(e){
+      e.preventDefault();
+      var text_field_value = $text_field.val();
+      $text_field.val("");
+      var tags_raw = text_field_value.split(",");
+      $(tags_raw).each(function(idx, tag){
+        tag_array.push(tag);
+      }); 
+      showTags();
+    });
+
+
+    var $current_image = $('#current_image');
+    var $clothingItemImage = $('#clothing_item_image');
+    $clothingItemImage.trigger('change');
+    $clothingItemImage.on('change', function(event){
+      var file = event.target.files[0];
+      $current_image.remove();
+      if (file.type.match('image.*')){
+        var reader = new FileReader();
+        reader.onload = (function(theFile){
+          var img = new Image();
+          img.src = theFile.target.result;
+          var $output = $('output');
+          $output.html(img);
+        });
+        reader.readAsDataURL(file);
+      }
+    });
+
+    var params = [
+      {
+        name:'tags',
+        value: tag_array
+      }
+    ];
+
+    var $form = $('form');
+    $form.submit(function(){
+      $.each(params, function(i, param){
+        $('<input />').attr('type', 'hidden')
+        .attr('name', param.name)
+        .attr('value', param.value)
+        .appendTo($form);
+      });
+    });
+
+
+
+  });
+
+</script>

@@ -1,0 +1,144 @@
+<%= form_for @look do |f| %>
+  <p>
+  	<%= f.label :name %>
+  	<%= f.text_field :name %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </p>
+
+  <p class="clothing_items">
+  <% @clothing_items.each do |clothing_item| %>
+    <%= check_box_tag "clothing_item_ids[]", clothing_item.id %><%= image_tag clothing_item.image.url(:thumb) %>
+  <% end %>
+  </p>
+
+  <ul class="show-tags">
+    <% @tags.each do |tag| %>
+    <li class="tag">
+      <%= tag.text %>
+      <a href='#'>&times</a>
+    </li>
+    <% end %>
+  </ul>
+
+  <%= render partial: 'tag_form' %>
+
+  <p>
+  	<%= f.submit %>
+  </p>
+<% end %>
+
+
+<script>
+// edit tags
+  var tag_array = [];
+  var clothes_array;
+
+  var $clothing_items;
+
+  $(document).on('click','.tag a',function(e){
+    e.preventDefault();
+    var unformatted_text = $(this).parent().text();
+    var text = unformatted_text.match(/\w+.*[\w]/);
+    var index = tag_array.indexOf(text[0]);
+    tag_array.splice(index, 1);
+    showTags();
+  });
+
+  function showTags() { 
+    $('.show-tags').empty();
+    $(tag_array).each(function(idx, tag){
+      var $li = $("<li>");
+      var $lis = $li.text(tag);
+      $lis.attr('class', "tag");
+      var $a = $('<a href="#">&times</a>');
+      $lis.append($a);
+      $('.show-tags').append($lis);   
+    });
+  }
+
+  function showClothes() {
+    $clothing_items.empty();
+    $.ajax({
+      url: '/looks/<%=current_user.id %>/edit',
+      method: 'get',
+      data: {deleted_clothes: clothes_array},
+      dataType: 'JSON',
+      success: function(data){
+        console.dir(data);
+        $(data).each(function(idx, clothing_item){
+          $checkbox = $('<input type="checkbox" name="clothing_item_ids[]" value="'+ clothing_item.id + '"</input>');
+          $img = $('<img src="'+clothing_item.clothing_image_url+'"</img>');
+          $clothing_items.append($checkbox);
+          $clothing_items.append($img);
+        });
+      }
+    });
+  }
+
+  $(function() {
+
+    $clothing_items = $('.clothing_items');
+
+
+    $('li').each(function(idx, tag){
+      var unformatted_text = $(tag).text();
+      var text = unformatted_text.match(/\w+.*[\w]/);
+      tag_array.push(text[0]);
+    });
+
+
+    var $text_field = $('#tags');
+    var $submit = $('#add');
+
+    $text_field.on('keypress', function(e){
+      if (e.keyCode === 13) {
+        $submit.trigger('click');
+      }
+    });
+
+    $submit.on('click', function(e){
+      e.preventDefault();
+      var text_field_value = $text_field.val();
+      $text_field.val("");
+      var tags_raw = text_field_value.split(",");
+      $(tags_raw).each(function(idx, tag){
+        tag_array.push(tag);
+      }); 
+    showTags();
+    });
+
+    clothes_array = [];
+    var $del = $('.look a');
+
+    $del.on('click', function(){
+      var id = $(this).parent().attr('id');
+      clothes_array.push(id);
+      $(this).parent().remove();
+      showClothes();
+    });
+
+    var params = [
+      {
+        name:'tags',
+        value: tag_array
+      },
+      {
+        name: 'clothing_items_delete',
+        value: clothes_array
+      }
+    ];
+
+    var $form = $('form');
+    $form.submit(function(){
+      $.each(params, function(i, param){
+        $('<input />').attr('type', 'hidden')
+        .attr('name', param.name)
+        .attr('value', param.value)
+        .appendTo($form);
+      });
+    });
+
+  });
+
+
+</script>

@@ -1,0 +1,20 @@
+<h1>
+	Clothing Items for <%= current_user.username %>
+</h1>
+
+<%= link_to('Add New Item', new_clothing_item_path) %>
+
+<ul>
+	<% @clothing_items.each do |item| %>
+	<li>
+		<div>
+			<%=link_to(item) do %>
+			  <%= image_tag item.image.url(:thumb)%>
+			<% end %>
+			<%= item.caption %>			
+			
+		</div>
+	</li>
+	<% end %>
+</ul>
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Juxtapose</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="/app/stylesheets/styles.css">
+</head>
+<body>
+
+
+	<% if current_user %>
+   <%= render partial: "/partials/nav_for_current_user" %>
+  <% else %>
+    <%= render partial: "/partials/nav_for_non_user" %>
+  <% end %>
+
+
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+<h1>Look Book</h1>
+
+<%= link_to('Add New Look', new_look_path) %>
+
+<% @looks.each do |look| %>
+
+<h3><%= link_to look.name, look_path(look) %></h3>
+
+<% end %>
+
