@@ -9,9 +9,8 @@
 	<li>
 		<div>
 			<%=link_to(item) do %>
-			  <%= image_tag item.image.url(:medium)%>
+			  <%= image_tag item.image.url(:thumb)%>
 			<% end %>
-			<%= image_tag item.image.url(:thumb) %>
 			<%= item.caption %>			
 			
 		</div>

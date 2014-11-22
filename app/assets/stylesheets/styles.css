@@ -16,6 +16,14 @@
 	margin-right: 400px;
 }
 
+.nav a {
+	border: 1px solid black;
+	margin: 10px;
+	padding: 5px;
+	text-decoration: none;
+	text-align: left;
+	float: left;
+}
 
 #non-user {
 	display: inline;
@@ -76,3 +84,22 @@
 	left: 50%;
 	margin:-150px 0 0;
 }
+
+/*CLOTHING ITEMS INDEX*/
+
+
+/*CLOTHING ITEMS SHOW*/
+
+.heading {
+	border-bottom: 1px solid black;
+	width: 95%;
+	
+}
+
+
+body {
+	margin-top: 100px;
+}
+
+
+
