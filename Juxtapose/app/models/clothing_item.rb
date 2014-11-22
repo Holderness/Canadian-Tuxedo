@@ -8,4 +8,11 @@ class ClothingItem < ActiveRecord::Base
   has_many :looks, through: :clothing_assignments
   has_many :clothing_tag_assignments
   has_many :tags, through: :clothing_tag_assignments
+
+  def clothing_image_url
+
+    image.url(:thumb)
+
+  end
+
 end
