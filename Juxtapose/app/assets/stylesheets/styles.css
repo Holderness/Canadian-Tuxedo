@@ -1,9 +1,78 @@
-nav p{
+.nav {
+	/*float: left;*/
+	height: auto;
+	padding: 15px;
+	background: rgb(255,255,255);
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	margin: 0;
+	text-align: right;
+}
+
+.nav h1 {
 	display: inline;
-	padding-left: 1.2em;
+	margin-right: 400px;
+}
+
+
+#non-user {
+	display: inline;
+	margin-right: 50px;
+	text-decoration: none;
 	font-size: 20px;
 }
 
 #logout {
 	float: right;
+}
+
+/*WELCOME PAGE*/
+#login {
+	margin:-150px 0 0 -250px;
+	width: 400px;
+	height: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	padding: 30px;
+	background-color: rgba(255,255,255, 0.7);
+}
+
+#login-form input, #register input {
+	width: 380px;
+	margin: 10px 0;
+}
+
+#login-form p, #register p {
+	text-align: center;
+	margin: 0;
+}
+
+/*REGISTER*/
+#info {
+	float: left;
+	width: 400px;
+	height: 200px;
+	padding: 30px;
+	background-color: rgba(255,255,255, 0.7);
+	margin: 50px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin:-150px 0 0 -470px;
+}
+
+#register {
+	float: right;
+	width: 400px;
+	height: 200px;
+	padding: 30px;
+	background-color: rgba(255,255,255, 0.7);
+	margin: 50px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin:-150px 0 0;
 }
