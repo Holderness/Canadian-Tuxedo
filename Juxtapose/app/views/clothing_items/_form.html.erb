@@ -15,7 +15,7 @@
     <% @tags.each do |tag| %>
     <li class="tag">
       <%= tag.text %>
-      <button>&times</button>
+      <a href='#'>&times</a>
     </li>
     <% end %>
   </ul>
@@ -32,9 +32,10 @@
 
   var tag_array = [];
 
-  $(document).on('click','.tag button',function(){
+  $(document).on('click','.tag a',function(e){
+    e.preventDefault();
     var unformatted_text = $(this).parent().text();
-    var text = unformatted_text.match(/\w+[\w]/);
+    var text = unformatted_text.match(/\w+.*[\w]/);
     var index = tag_array.indexOf(text[0]);
     tag_array.splice(index, 1);
     showTags();
@@ -46,8 +47,8 @@
       var $li = $("<li>");
       var $lis = $li.text(tag);
       $lis.attr('class', "tag");
-      var $button = $('<button>&times</button>');
-      $lis.append($button);
+      var $a = $('<a href="#"">&times</a>');
+      $lis.append($a);
       $('.show-tags').append($lis);   
     });
   }
@@ -57,15 +58,20 @@
 
 
     $('li').each(function(idx, tag){
-      // var re = new RegExp("\w+[\w]");
       var unformatted_text = $(tag).text();
-      var text = unformatted_text.match(/\w+[\w]/);
+      var text = unformatted_text.match(/\w+.*[\w]/);
       tag_array.push(text[0]);
     });
 
 
     var $text_field = $('#tags');
     var $submit = $('#add');
+
+    $text_field.on('keypress', function(e){
+      if (e.keyCode === 13) {
+        $submit.trigger('click');
+      }
+    });
 
     $submit.on('click', function(e){
       e.preventDefault();
@@ -75,7 +81,7 @@
       $(tags_raw).each(function(idx, tag){
         tag_array.push(tag);
       }); 
-    showTags();
+      showTags();
     });
 
 
