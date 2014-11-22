@@ -9,7 +9,7 @@
 
   <p>
   <% @clothing_items.each do |clothing_item| %>
-    <%= check_box_tag "clothing_item_ids[]", clothing_item.id %> <%= image_tag clothing_item.image.url(:thumb) %>
+    <%= check_box_tag "clothing_item_ids[]", clothing_item.id %><%= image_tag clothing_item.image.url(:thumb) %>
   <% end %>
   </p>
 
@@ -57,12 +57,6 @@
 
   $(function() {
 
-    // picked_items = [];
-    // $clothing_items = $('.look div')
-    // $clothing_items.each(function(idx, item){
-    //   picked_items.push(item.id);
-    // });
-    
 
     $('li').each(function(idx, tag){
       var unformatted_text = $(tag).text();
@@ -92,29 +86,12 @@
     });
 
     var clothes_array = [];
-    var $del = $('.delete');
+    var $del = $('.look a');
     $del.on('click', function(){
       var id = $(this).parent().attr('id');
       clothes_array.push(id);
-    });
+      $(this).parent().remove();
 
-
-    var $current_image = $('#current_image');
-    var $lookImage = $('#look_image');
-    $lookImage.trigger('change');
-    $lookImage.on('change', function(event){
-      var file = event.target.files[0];
-      $current_image.remove();
-      if (file.type.match('image.*')){
-        var reader = new FileReader();
-        reader.onload = (function(theFile){
-          var img = new Image();
-          img.src = theFile.target.result;
-          var $output = $('output');
-          $output.html(img);
-        });
-        reader.readAsDataURL(file);
-      }
     });
 
     var params = [
