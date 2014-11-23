@@ -1,2 +1,3 @@
-public/system
+/public/system
 schema.db
+.env
