@@ -25,8 +25,6 @@ class ClothingTagAssignment < ActiveRecord::Base
       tag_assignments_ids << tag_assignment.id
     end
     ClothingTagAssignment.destroy(tag_assignments_ids)
-
-    redirect_to clothing_items_path
   end
 
 end
