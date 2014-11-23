@@ -1,13 +1,17 @@
-<h1>edit</h1>
+<div class="body">
+	<h1 class="heading">Edit this Look</h1>
 
-<h3><%= @look.name %></h3>
-<div class="look" style="border: 1px solid black">
-  <% @look_clothing_items.each do |clothing_item| %>
-  	<div id="<%= clothing_item.id %>">
-    	<%= image_tag clothing_item.image.url(:thumb), :class => "look-image" %>
-    	<a href="#" class="delete">&times</a>
-  	</div>
-  <% end %>
+	<div class="edit-look">
+		<h2><%= @look.name %></h2>
+		<div class="look">
+		  <% @look_clothing_items.each do |clothing_item| %>
+		  	<div id="<%= clothing_item.id %>">
+		    	<%= image_tag clothing_item.image.url(:medium), :class => "look-image" %>
+		    	<a href="#" class="delete">&times</a>
+		  	</div>
+		  <% end %>
+		</div>
+
+		<%= render partial: 'form' %>
+	</div>
 </div>
-
-<%= render partial: 'form' %>

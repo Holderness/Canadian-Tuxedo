@@ -273,15 +273,33 @@
 
 /*LOOK SHOW*/
 
-.show-look {
+.show-look, .look {
 	width: 1000px;
 	border: 1px solid black;
 	margin: auto;
+	height: 310px;
+	overflow-x: scroll; 
 }
 
 .show-tags {
 	width: 500px;
 	margin: 20px auto;
+}
+
+.show-tags li {
+	border-radius: 8px;
+	padding: 5px;
+}
+
+/*LOOK EDIT*/
+
+.look-image {
+	display: inline;
+}
+
+.edit-look {
+	width: 1000px;
+	margin: auto;
 }
 
 
