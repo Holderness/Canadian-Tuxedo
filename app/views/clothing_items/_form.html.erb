@@ -8,7 +8,7 @@
   <%= f.file_field :image %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <p>
-  	<%= f.label :caption %>
+  	<%= f.label :'Caption for your piece!' %><br>
   	<%= f.text_field :caption %>
   </p>
   <ul class="show-tags">
@@ -22,7 +22,7 @@
 	<%= render partial: 'tag_form' %>
 
   <p>
-  	<%= f.submit id:"save" %>
+  	<%= f.submit :'Put it in your closet!', id:"save" %>
   </p>
 <% end %>
 
