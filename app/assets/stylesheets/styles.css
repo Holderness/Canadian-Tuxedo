@@ -127,6 +127,7 @@
 
 .delete {
 	display: inline;
+	margin: 0 0 30px 20px;
 }
 
 .show-tags li {
@@ -268,7 +269,19 @@
 #tags {
 	width: 400px;
 	display: block;
-	/*margin: 10px;*/
+}
+
+/*LOOK SHOW*/
+
+.show-look {
+	width: 1000px;
+	border: 1px solid black;
+	margin: auto;
+}
+
+.show-tags {
+	width: 500px;
+	margin: 20px auto;
 }
 
 
