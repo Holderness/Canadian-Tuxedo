@@ -7,7 +7,7 @@
 		<%= link_to('Add New Clothing Item', new_clothing_item_path) %> |
 		<%= link_to('Create a Look', new_look_path) %>
 	</div>	
-	<div class="closet">
+	<div class="closet cf">
 		<% @clothing_items.each do |item| %>
 			<div>
 				<%=link_to(item) do %>

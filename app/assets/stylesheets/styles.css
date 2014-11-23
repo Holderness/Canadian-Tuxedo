@@ -2,9 +2,16 @@
 
 
 
+
+
+
+
+
+
+
 body {
 	font-family: 'Source Sans Pro', sans-serif;
-	background-image: url('/assets/img-thing.jpg');
+	background-image: url('/assets/lilac.jpg');
 	background-position: top;
 	margin-top: 85px;
 	background-attachment: fixed;
@@ -18,9 +25,6 @@ body {
 .body {
 	background: white;
 	width: 99%;
-	margin-top: 0;
-	margin-right: 0;
-	height: 90%;
 	border-radius: 15px;
 }
 
@@ -147,15 +151,14 @@ output {
 .heading {
 	border-bottom: 1px solid black;
 	width: 95%;
-	margin: 0 auto 10px auto;
+	margin: 10px auto;
 }
 
 .show-image {
-	margin-left: 10px;
+	margin-left: 20px;
 }
 
 .col1 {
-	/*position: absolute;*/
 	margin-right: 20px;
 	padding-bottom: 5px;
 }
@@ -166,15 +169,13 @@ output {
 
 .col2 {
 	position: absolute;
-	margin: -190px 100px 0;
-	left: 50%;
-	top: 50%;
-	width: 400px;
+	left: 43%;
+	top: 17%;
+	width: 430px;
 	padding: 10px;
 }
 
 .edit {
-	width: 120px;
 	font-size: 20px;
 	display: inline;
 	margin: 10px;
@@ -182,15 +183,12 @@ output {
 
 .delete {
 	display: inline;
-	margin: 0 0 30px 20px;
 }
 
 .show-tags li {
 	list-style-type: none;
-	padding-left: 0;
-	display: inline;
 	margin: 10px;
-	border: 1px solid black;
+	border: 1px solid #A78BBB;
 
 }
 
@@ -200,11 +198,31 @@ output {
 	border-radius: 8px;
 }
 
+.show-tags li:hover {
+    background: #A78BBB;
+}
+
+.show-tags li:hover a {
+    color: white;
+}
+
+form.button_to {
+   display: inline;
+}
+
+form.button_to div {
+   display: inherit;
+}
+
 /*CLOTHING ITEMS NEW*/
 
 .add-image {
 	margin: auto;
 	width: 421px;
+}
+
+output img {
+    width: 200px;
 }
 
 .side-note {
@@ -220,9 +238,35 @@ output {
 	margin-bottom: 20px;
 }
 
-#save {
+.primary-button {
 	font-size: 30px;
-	background-color: green;
+	background-color: #A78BBB;
+	border: none;
+	border-radius: 7px;
+	box-shadow: 1px 1px 4px #200F30;
+	cursor: pointer;
+}
+
+.secondary-button {
+  height: 30px;
+  background: white;
+  border: 1px solid #A78BBB;
+  border-radius: 7px;
+  box-shadow: 1px 1px 4px #200F30;
+  cursor: pointer;
+}
+
+.secondary-button:hover {
+  background: #A78BBB;
+  color: white;
+}
+
+form#new_clothing_item {
+    padding-bottom: 10px;
+}
+
+.primary-button:hover {
+    color: white;
 }
 
 .tag {
@@ -233,7 +277,9 @@ output {
 
 .show-tags .tag a {
 	text-decoration: none;
+	color:  #A78BBB;
 	border: none;
+	font-weight: bolder;
 }
 
 /*CLOTHING ITEMS*/
@@ -247,18 +293,13 @@ output {
 }
 
 .closet {
-	/* width: 1000px; */
-	height: 505px;
 	margin: 10px auto;
-	border: 1px solid black;
-	padding: 2px;
-	overflow-x: scroll;
+	padding: 10px;
+	width: 95%;
 }
 
 .closet div {
 	display: inline;
-	height: 463px;
-	overflow: hidden;
 }
 
 .closet img {
@@ -323,8 +364,10 @@ output {
 }
 
 #tags {
-	width: 400px;
+	width: 415px;
 	display: block;
+	margin: 0;
+	padding: 0;
 }
 
 /*LOOK SHOW*/
@@ -338,13 +381,15 @@ output {
 }
 
 .show-tags {
-	width: 500px;
+	width: 415px;
 	margin: 20px auto;
+	padding: 0;
 }
 
 .show-tags li {
-	border-radius: 8px;
-	padding: 5px;
+	display: inline-block;
+	border-radius: 7px;
+	padding: 4px;
 }
 
 /*LOOK EDIT*/
@@ -378,4 +423,14 @@ output {
 	font-size: 16px;
 }
 
+/*Clearfix*/
 
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}

@@ -1,5 +1,10 @@
-<h1>edit</h1>
-<%= image_tag @clothing_item.image.url(:medium), :id => "current_image" %>
+<div class="body">
+  <h1 class="heading">Edit this item!</h1>
+  <div class="add-image">
+    <%= image_tag @clothing_item.image.url(:medium), :id => "current_image" %>
 
-<%= render partial: 'form' %>
+    <%= render partial: 'form' %>
+  </div>
+</div>  
+
 
