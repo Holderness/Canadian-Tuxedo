@@ -7,4 +7,30 @@
       <% end %>
     </li>
   <% end %>
+
+  <div class="inspiration"></div>
 </ul>
+
+
+<script>
+    $(function(){
+      $inspiration = $('.inspiration');
+
+      $.ajax({
+        method: 'get',
+        url: '/tags/clothing_items/<%=@tag.id%>',
+        dataType: 'JSON',
+        success: function(data){
+          photo_array = data.rsp.photos.photo;
+          $(photo_array).each(function(index, photo){
+            $img = $('<img src="https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id +'_'+ photo.secret +'.jpg" />');
+            $inspiration.append($img);
+          });
+        }
+      });
+
+
+    });
+  
+
+</script>
