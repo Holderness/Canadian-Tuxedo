@@ -42,9 +42,15 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    dotenv (1.0.2)
+    dotenv-rails (1.0.2)
+      dotenv (= 1.0.2)
     erubis (2.7.0)
     execjs (2.2.2)
     hike (1.2.3)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.11)
     jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
@@ -59,6 +65,7 @@ GEM
     mime-types (2.4.3)
     minitest (5.4.3)
     multi_json (1.10.1)
+    multi_xml (0.5.5)
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -132,6 +139,8 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   coffee-rails (~> 4.0.0)
+  dotenv-rails
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   paperclip (~> 4.2)

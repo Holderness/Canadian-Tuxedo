@@ -43,4 +43,5 @@ gem "paperclip", "~> 4.2"
 
 
 gem 'rails_12factor'
-
+gem 'httparty'
+gem 'dotenv-rails'
