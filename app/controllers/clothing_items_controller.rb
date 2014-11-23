@@ -46,6 +46,8 @@ class ClothingItemsController < ApplicationController
     clothing_item = ClothingItem.find(params[:id])
     clothing_item.destroy
     ClothingTagAssignment.delete_tags(clothing_item)
+
+    redirect_to clothing_items_path
   end
 
   private
