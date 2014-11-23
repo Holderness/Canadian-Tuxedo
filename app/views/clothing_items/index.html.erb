@@ -1,20 +1,19 @@
-<h1>
-	Clothing Items for <%= current_user.username %>
-</h1>
+<div class="body">
+	<h1 class="heading">
+		Closet
+	</h1>
 
-<%= link_to('Add New Item', new_clothing_item_path) %>
-
-<ul>
-	<% @clothing_items.each do |item| %>
-	<li>
-		<div>
-			<%=link_to(item) do %>
-			  <%= image_tag item.image.url(:thumb)%>
-			<% end %>
-			<%= item.caption %>			
-			
-		</div>
-	</li>
-	<% end %>
-</ul>
-
+	<div class="closet-link">
+		<%= link_to('Add New Clothing Item', new_clothing_item_path) %> |
+		<%= link_to('Create a Look', new_look_path) %>
+	</div>	
+	<div class="closet">
+		<% @clothing_items.each do |item| %>
+			<div>
+				<%=link_to(item) do %>
+				  <%= image_tag item.image.url(:large)%>
+				<% end %>							
+			</div>
+		<% end %>
+	</div>
+</div>

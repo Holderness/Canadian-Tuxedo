@@ -1,5 +1,4 @@
 .nav {
-	/*float: left;*/
 	height: auto;
 	padding: 15px;
 	background: rgb(255,255,255);
@@ -93,13 +92,151 @@
 .heading {
 	border-bottom: 1px solid black;
 	width: 95%;
-	
+	margin: 0 auto 10px auto;
 }
 
+.show-image {
+	margin-left: 10px;
+}
+
+.col1 {
+	/*position: absolute;*/
+	margin-right: 20px;
+	padding-bottom: 5px;
+}
+
+.col1 img {
+	border: 1px solid black;
+}
+
+.col2 {
+	position: absolute;
+	margin: -190px 100px 0;
+	left: 50%;
+	top: 50%;
+	width: 400px;
+	padding: 10px;
+}
+
+.edit {
+	width: 120px;
+	font-size: 20px;
+	display: inline;
+	margin: 10px;
+}
+
+.delete {
+	display: inline;
+}
+
+.show-tags li {
+	list-style-type: none;
+	padding-left: 0;
+	display: inline;
+	margin: 10px;
+	border: 1px solid black;
+
+}
+
+.show-tags a {
+	text-decoration: none;
+	padding: 5px 10px;
+	border-radius: 8px;
+}
+
+/*CLOTHING ITEMS NEW*/
+
+.add-image {
+	margin: auto;
+	width: 421px;
+}
+
+.side-note {
+	font-size: 13px;
+	margin: 5px 0 10px;
+}
+
+.add-image input {
+	width: 415px;
+}
+
+.add-image label {
+	margin-bottom: 20px;
+}
+
+#save {
+	font-size: 30px;
+	background-color: green
+}
+
+.tag {
+	border: 1px solid black;
+	padding: 5px 10px;
+	border-radius: 8px;
+}
+
+.show-tags .tag a {
+	text-decoration: none;
+	border: none;
+}
+
+/*CLOTHING ITEMS*/
+.closet-link {
+	margin: auto;
+	width: 300px;
+}
+
+.closet-link a {
+	text-decoration: none;	
+}
+
+.closet {
+	width: 1000px;
+	height: 505px;
+	margin: 10px auto;
+	border: 1px solid black;
+	padding: 2px;
+	overflow-x: scroll;
+}
+
+.closet div {
+	display: inline;
+	float: left;
+}
+
+.closet img {
+	border: 1px dotted black;
+	margin: 2px;
+	height: 500px;
+	width: 500px;
+}
+
+
+
+
+
+
+
+
+
+/*GLOBAL*/
 
 body {
-	margin-top: 100px;
+	background-image: url('http://chicscribe.files.wordpress.com/2013/01/oc-pink-drapes.jpg');
+	background-position: top;
+	margin-top: 85px;
+	background-attachment: fixed;
 }
 
+.body {
+	background: white;
+	width: 99%;
+	margin-top: 0;
+	margin-right: 0;
+	height: 90%;
+}
 
-
+output {
+	height: 600px;
+	width: 600px;
+}
