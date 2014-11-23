@@ -1,10 +1,24 @@
-<h1>Look Book</h1>
+<div class="body">
+	<h1 class="heading">Look Book</h1>
+	<div class="closet-link">
+		<%= link_to('Create New Look', new_look_path) %> |
+		<%= link_to('Create New Clothing Item', new_clothing_item_path) %>
+	</div>
 
-<%= link_to('Add New Look', new_look_path) %>
-
-<% @looks.each do |look| %>
-
-<h3><%= link_to look.name, look_path(look) %></h3>
-
-<% end %>
-
+	<% @looks.each do |look| %>
+		<div class="lookbook">
+			<% look.clothing_items.each do |clothing_item| %>
+		    <%= image_tag clothing_item.image.url(:medium) %>
+		  <% end %>
+	  </div>
+	  <h3 class="look-name">
+			<%= link_to look.name, look_path(look) %>
+		</h3>
+		<h3 class="vote-count">
+			<%=look.votes.count %>
+		</h3>
+		<p class="note">
+			votes
+		</p>
+	<% end %>
+</div>
