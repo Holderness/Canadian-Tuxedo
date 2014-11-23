@@ -302,6 +302,26 @@
 	margin: auto;
 }
 
+/*GALLERY*/
+
+.vote {
+	width: 200px;
+	margin: 10px auto;
+}
+.vote-yes {
+	background-color: green;
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+.vote-no {
+	background-color: red;
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
 
 /*GLOBAL*/
 

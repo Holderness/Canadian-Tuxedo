@@ -1,15 +1,18 @@
-<h1> Discover </h1>
+<div class="body">
+  <h1> Discover </h1>
 
-<% @looks.each do |look| %>
-<ul class="look" id="<%= look.id %>">
-  <% look.clothing_items.each do |clothing_item| %>
-    <li><%= image_tag clothing_item.image.url(:medium) %></li>
+  <% @looks.each do |look| %>
+    <div class="look" id="<%= look.id %>">
+      <% look.clothing_items.each do |clothing_item| %>
+        <%= image_tag clothing_item.image.url(:medium) %>
+      <% end %>
+    </div>
+    <div class="vote">
+      <button class="vote-yes">Vote Yes</button>
+      <button class="vote-no">Vote No</button>
+    </div>
   <% end %>
-  <button class="vote-yes">Vote Yes</button>
-  <button class="vote-no">Vote No</button>
-</ul>
-<% end %>
-
+</div>
 
 <script>
   var $looks;
