@@ -1,6 +1,41 @@
+/*GLOBAL*/
+
+
+
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	background-image: url('/assets/img-thing.jpg');
+	background-position: top;
+	margin-top: 85px;
+	background-attachment: fixed;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.body {
+	background: white;
+	width: 99%;
+	margin-top: 0;
+	margin-right: 0;
+	height: 90%;
+	border-radius: 15px;
+}
+
+output {
+	height: 600px;
+	width: 600px;
+}
+
+
+/*selective*/
+
+
 .nav {
 	height: auto;
-	padding: 15px;
+	padding: 5px 0;
 	background: rgb(255,255,255);
 	position: absolute;
 	top: 0%;
@@ -36,6 +71,25 @@
 }
 
 /*WELCOME PAGE*/
+
+#login h1 {
+    text-align: center;
+    margin: auto;
+}
+
+#login-button {
+    height: 35px;
+    background: #A78BBB;
+    border: none;
+    border-radius: 7px;
+    box-shadow: 1px 1px 4px #200F30;
+}
+
+.nav a:hover {
+    background: #A78BBB;
+    color: white;
+    border: 1px solid #200F30;
+}
 #login {
 	margin:-150px 0 0 -250px;
 	width: 400px;
@@ -45,6 +99,7 @@
 	left: 50%;
 	padding: 30px;
 	background-color: rgba(255,255,255, 0.7);
+	border-radius: 25px;
 }
 
 #login-form input, #register input {
@@ -192,7 +247,7 @@
 }
 
 .closet {
-	width: 1000px;
+	/* width: 1000px; */
 	height: 505px;
 	margin: 10px auto;
 	border: 1px solid black;
@@ -202,14 +257,15 @@
 
 .closet div {
 	display: inline;
-	float: left;
+	height: 463px;
+	overflow: hidden;
 }
 
 .closet img {
 	border: 1px dotted black;
-	margin: 2px;
-	height: 500px;
-	width: 500px;
+	/* margin: 2px; */
+	width: 24%;
+	float: left;
 }
 
 /*LOOKBOOK*/
@@ -323,24 +379,3 @@
 }
 
 
-/*GLOBAL*/
-
-body {
-	background-image: url('http://chicscribe.files.wordpress.com/2013/01/oc-pink-drapes.jpg');
-	background-position: top;
-	margin-top: 85px;
-	background-attachment: fixed;
-}
-
-.body {
-	background: white;
-	width: 99%;
-	margin-top: 0;
-	margin-right: 0;
-	height: 90%;
-}
-
-output {
-	height: 600px;
-	width: 600px;
-}
