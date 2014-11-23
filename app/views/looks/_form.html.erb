@@ -1,6 +1,6 @@
 <%= form_for @look do |f| %>
-  <p>
-  	<%= f.label :name %>
+  <p class="look-form">
+  	<%= f.label :'Name of Look:' %>
   	<%= f.text_field :name %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
   </p>
@@ -23,8 +23,8 @@
 
   <%= render partial: 'tag_form' %>
 
-  <p>
-  	<%= f.submit %>
+  <p class="save-look">
+  	<%= f.submit :'Save Look!' %>
   </p>
 <% end %>
 

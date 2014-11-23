@@ -166,7 +166,7 @@
 
 #save {
 	font-size: 30px;
-	background-color: green
+	background-color: green;
 }
 
 .tag {
@@ -244,8 +244,32 @@
 }
 
 
+/*LOOK NEW*/
 
+.look-form {
+	margin-left: 10px;
+}
 
+.look-form input {
+	width: 400px;
+	margin-top: 10px;
+}
+
+.new-look {
+	width: 500px;
+	margin: auto;
+}
+
+.save-look input {
+	font-size: 30px;
+	background-color: green;	
+}
+
+#tags {
+	width: 400px;
+	display: block;
+	/*margin: 10px;*/
+}
 
 
 /*GLOBAL*/
