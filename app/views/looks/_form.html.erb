@@ -7,7 +7,8 @@
 
   <p class="clothing_items">
   <% @clothing_items.each do |clothing_item| %>
-    <%= check_box_tag "clothing_item_ids[]", clothing_item.id %><%= image_tag clothing_item.image.url(:thumb) %>
+    <input type="checkbox" name="clothing_item_ids[]" id="checkbox-<%=clothing_item.id%>" value="<%=clothing_item.id%>"class="look-clothing-item-checkbox">
+    <label for="checkbox-<%=clothing_item.id%>"><%= image_tag clothing_item.image.url(:thumb), class: 'look-clothing-item' %></label>
   <% end %>
   </p>
 
@@ -32,6 +33,10 @@
 // edit tags
   var tag_array = [];
   var clothes_array;
+
+  $(document).on('click', '.look-clothing-item', function(){
+    $(this).toggleClass("selected");
+  });
 
   var $clothing_items;
 
@@ -66,8 +71,8 @@
       success: function(data){
         console.dir(data);
         $(data).each(function(idx, clothing_item){
-          $checkbox = $('<input type="checkbox" name="clothing_item_ids[]" value="'+ clothing_item.id + '"</input>');
-          $img = $('<img src="'+clothing_item.clothing_image_url+'"</img>');
+          $checkbox = $('<input type="checkbox" class="look-clothing-item-checkbox" id="checkbox-'+ clothing_item.id + '" name="clothing_item_ids[]" value="'+ clothing_item.id + '"</input>');
+          $img = $('<label for="checkbox-'+ clothing_item.id + '"> <img src="'+clothing_item.clothing_image_url+'"class="look-clothing-item"></img></label>');
           $clothing_items.append($checkbox);
           $clothing_items.append($img);
         });

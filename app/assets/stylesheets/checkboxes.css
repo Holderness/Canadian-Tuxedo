@@ -1,0 +1,13 @@
+.look-clothing-item-checkbox {
+display: none;
+}
+
+.look-clothing-item{
+  padding: 5px
+
+}
+
+.selected{
+  padding:0px;
+  border: 5px solid green;
+}

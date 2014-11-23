@@ -58,11 +58,9 @@ class LooksController < ApplicationController
     LookTagAssignment.add_tags(params, look)
     # update clothing items
     clothing_items_create_ids = params[:clothing_item_ids]
-    binding.pry
     clothing_items_delete_ids = params[:clothing_items_delete].split(",")
-    clothing_items_create = clothing_items_create_ids - clothing_items_delete_ids || []
-    clothing_items_delete = clothing_items_delete_ids - clothing_items_create_ids || []
-        binding.pry
+    clothing_items_create = clothing_items_create_ids || [] - clothing_items_delete_ids || []
+    clothing_items_delete = clothing_items_delete_ids ||[] - clothing_items_create_ids || []
     clothing_items_create.each { |id| ClothingAssignment.create(clothing_item_id: id, look_id: look.id) } if clothing_items_create
     if clothing_items_delete
       clothing_items_delete.each do |item|
