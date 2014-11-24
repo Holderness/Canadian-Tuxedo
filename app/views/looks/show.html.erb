@@ -28,5 +28,5 @@
 
 	<%= button_to("Edit this look!", edit_look_path(@look), method: :get, 'class' => 'edit secondary-button') %>
 
-	<%= link_to('or delete it from your lookbook', look_path(@look), method: :delete, 'class' => 'delete') %>
+	<%= link_to('or delete it from your lookbook', look_path(@look), method: :delete, 'class' => 'delete', data: { confirm: 'Are you sure?' }) %>
 </div>
