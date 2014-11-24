@@ -19,6 +19,7 @@
 
 
 
+
 body {
 	font-family: 'Source Sans Pro', sans-serif;
 	background-image: url('/assets/lilac.jpg');
@@ -415,6 +416,10 @@ input#tags {
 
 form#new_look {
   padding-bottom: 10px;
+}
+
+.picture-frame label {
+   cursor: pointer;
 }
 
 /*LOOK SHOW*/

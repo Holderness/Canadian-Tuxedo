@@ -8,16 +8,18 @@
   <p class="clothing_items">
   <% @clothing_items.each do |clothing_item| %>
     <input type="checkbox" name="clothing_item_ids[]" id="checkbox-<%=clothing_item.id%>" value="<%=clothing_item.id%>"class="look-clothing-item-checkbox">
-    <label for="checkbox-<%=clothing_item.id%>">
+    
     <div class="clothing-item">
       <div class="selected">
         Added!
       </div>
-      <div class="picture-frame small">
-        <%= image_tag clothing_item.image.url(:thumb), class: 'look-clothing-item' %>
+        <div class="picture-frame small">
+          <label for="checkbox-<%=clothing_item.id%>">
+          <%= image_tag clothing_item.image.url(:thumb), class: 'look-clothing-item' %>
+          </label>
+        </div>
       </div>
-      </div>
-    </label>
+
   <% end %>
   </p>
 
