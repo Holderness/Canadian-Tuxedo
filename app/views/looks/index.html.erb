@@ -7,9 +7,11 @@
 
 	<% @looks.each do |look| %>
 		<div class="lookbook">
-			<% look.clothing_items.each do |clothing_item| %>
-		    <%= image_tag clothing_item.image.url(:medium) %>
-		  <% end %>
+			<div class="lookbook-inner">
+				<% look.clothing_items.each do |clothing_item| %>
+			    <%= image_tag clothing_item.image.url(:medium) %>
+			  <% end %>
+		  </div>
 	  </div>
 	  <h3 class="look-name">
 			<%= link_to look.name, look_path(look) %>

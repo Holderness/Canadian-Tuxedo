@@ -1,4 +1,4 @@
-<div class="body">
+<div class="body cf">
   <h1 class="heading">Your Clothing Item:</h1>
   <div class="show-image">  
     <div class="col1">
@@ -9,7 +9,7 @@
       </h3>
     </div>
     <div class="col2">
-      <%= button_to("Edit this item!", edit_clothing_item_path(@clothing_item), method: :get, 'class' => 'edit') %>
+      <%= button_to("Edit this item!", edit_clothing_item_path(@clothing_item), method: :get, 'class' => 'edit secondary-button') %>
       <%= link_to('or delete it from your closet', clothing_item_path(@clothing_item), method: :delete, 'class' => 'delete') %><br>
 
       <ul class="show-tags">

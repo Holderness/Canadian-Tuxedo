@@ -1,9 +1,11 @@
 <div class="body">
 	<h1 class="heading"><%= @look.name %></h1>
-	<div class="show-look">
-		<% @clothing_items.each do |clothing_item| %>
-			<%= image_tag clothing_item.image.url(:medium) %>
-		<% end %>
+	<div class="lookbook">
+		<div class="lookbook-inner">
+			<% @clothing_items.each do |clothing_item| %>
+				<%= image_tag clothing_item.image.url(:medium) %>
+			<% end %>
+		</div>
 	</div>
 
 	<ul class="show-tags">
@@ -24,7 +26,7 @@
 	</p>
 
 
-	<%= button_to("Edit this look!", edit_look_path(@look), method: :get, 'class' => 'edit') %>
+	<%= button_to("Edit this look!", edit_look_path(@look), method: :get, 'class' => 'edit secondary-button') %>
 
 	<%= link_to('or delete it from your lookbook', look_path(@look), method: :delete, 'class' => 'delete') %>
 </div>

@@ -9,6 +9,13 @@
 
 
 
+
+
+
+
+
+
+
 body {
 	font-family: 'Source Sans Pro', sans-serif;
 	background-image: url('/assets/lilac.jpg');
@@ -161,6 +168,7 @@ output {
 .col1 {
 	margin-right: 20px;
 	padding-bottom: 5px;
+	float: left;
 }
 
 .col1 img {
@@ -168,17 +176,15 @@ output {
 }
 
 .col2 {
-	position: absolute;
-	left: 43%;
-	top: 17%;
 	width: 430px;
-	padding: 10px;
+	float: left;
 }
 
 .edit {
 	font-size: 20px;
 	display: inline;
 	margin: 10px;
+	margin-top: 0px;
 }
 
 .delete {
@@ -196,6 +202,7 @@ output {
 	text-decoration: none;
 	padding: 5px 10px;
 	border-radius: 8px;
+	color: rgb(127, 33, 139);
 }
 
 .show-tags li:hover {
@@ -230,8 +237,7 @@ output img {
 	margin: 5px 0 10px;
 }
 
-.add-image input {
-	width: 415px;
+ {
 }
 
 .add-image label {
@@ -245,6 +251,7 @@ output img {
 	border-radius: 7px;
 	box-shadow: 1px 1px 4px #200F30;
 	cursor: pointer;
+	width: 415px;
 }
 
 .secondary-button {
@@ -254,11 +261,16 @@ output img {
   border-radius: 7px;
   box-shadow: 1px 1px 4px #200F30;
   cursor: pointer;
+  width: 415px;
 }
 
 .secondary-button:hover {
   background: #A78BBB;
   color: white;
+}
+
+.edit {
+   width: auto;
 }
 
 form#new_clothing_item {
@@ -318,12 +330,17 @@ form#new_clothing_item {
 }
 
 .lookbook {
-	width: 1000px;
-	height: 305px;
+	width: calc(100% - 2px);
+	height: 300px;
 	margin: 10px auto;
-	border: 1px solid black;
-	padding: 2px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
 	overflow-x: scroll;
+	overflow-y: hidden;
+}
+
+.lookbook-inner {
+   width: 3000px;
 }
 
 .vote-count {
@@ -344,6 +361,35 @@ form#new_clothing_item {
 
 /*LOOK NEW*/
 
+.picture-frame.small {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.clothing-item-hover {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #555;
+    color: white;
+    opacity: .5;
+    text-align: center;
+    line-height: 100px;
+    display: none;
+}
+
+.clothing-item {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.clothing-item:hover .clothing-item-hover {
+    display: inline-block;
+}
+
+
 .look-form {
 	margin-left: 10px;
 }
@@ -359,8 +405,7 @@ form#new_clothing_item {
 }
 
 .save-look input {
-	font-size: 30px;
-	background-color: green;	
+	font-size: 30px;	
 }
 
 #tags {
@@ -368,6 +413,10 @@ form#new_clothing_item {
 	display: block;
 	margin: 0;
 	padding: 0;
+}
+
+form#new_look {
+  padding-bottom: 10px;
 }
 
 /*LOOK SHOW*/
