@@ -19,7 +19,10 @@
 			<%= link_to look.name, look_path(look) %>
 		</h3>
 		<h3 class="vote-count">
-			<%=look.votes.count %>
+		 <% downvotes = Vote.where(look_id: look.id, vote: -1).count %> 
+     <% upvotes = Vote.where(look_id: look.id, vote: 1).count %>
+     <% total_votes = upvotes - downvotes %>
+		 <%= total_votes %>
 		</h3>
 		<p class="note">
 			votes
