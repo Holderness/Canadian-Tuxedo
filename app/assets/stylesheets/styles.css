@@ -371,27 +371,10 @@ form#new_clothing_item {
     overflow: hidden;
 }
 
-.clothing-item-hover {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background: #555;
-    color: white;
-    opacity: .5;
-    text-align: center;
-    line-height: 100px;
-    display: none;
-}
-
 .clothing-item {
     display: inline-block;
     cursor: pointer;
 }
-
-.clothing-item:hover .clothing-item-hover {
-    display: inline-block;
-}
-
 
 .look-form {
 	margin-left: 10px;
