@@ -240,9 +240,6 @@ output img {
 	margin: 5px 0 10px;
 }
 
- {
-}
-
 .add-image label {
 	margin-bottom: 20px;
 }
@@ -296,6 +293,21 @@ form#new_clothing_item {
 	border: none;
 	font-weight: bolder;
 }
+
+.tag-form {
+	margin-top: 11px;
+	text-align: center;
+}
+
+input#tags {
+	height: 15px;
+}
+
+#clothing_item_caption {
+	text-align: center;
+}
+
+
 
 /*CLOTHING ITEMS*/
 .closet-link {
