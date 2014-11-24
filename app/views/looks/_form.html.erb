@@ -8,14 +8,16 @@
   <p class="clothing_items">
   <% @clothing_items.each do |clothing_item| %>
     <input type="checkbox" name="clothing_item_ids[]" id="checkbox-<%=clothing_item.id%>" value="<%=clothing_item.id%>"class="look-clothing-item-checkbox">
+    <label for="checkbox-<%=clothing_item.id%>">
     <div class="clothing-item">
-      <div class="clothing-item-hover">Add me!</div>
-      <label for="checkbox-<%=clothing_item.id%>">
-        <div class="picture-frame small">
-          <%= image_tag clothing_item.image.url(:thumb), class: 'look-clothing-item' %>
-        </div>
-      </label>
-    </div>
+      <div class="selected">
+        Added!
+      </div>
+      <div class="picture-frame small">
+        <%= image_tag clothing_item.image.url(:thumb), class: 'look-clothing-item' %>
+      </div>
+      </div>
+    </label>
   <% end %>
   </p>
 
@@ -40,10 +42,18 @@
 // edit tags
   var tag_array = [];
   var clothes_array;
+  var $selected = $('.selected');
 
-  $(document).on('click', '.look-clothing-item', function(){
-    $(this).toggleClass("selected");
+  $(document).on('click', '.clothing-item', function(){
+    if ($(this).find('.selected').css('display')=== 'none') {
+      $(this).find('.selected').css('display', 'inline-block');
+    } else {
+      $(this).find('.selected').css('display', 'none');
+
+    }
   });
+
+  
 
   var $clothing_items;
 
