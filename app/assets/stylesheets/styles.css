@@ -16,6 +16,9 @@
 
 
 
+
+
+
 body {
 	font-family: 'Source Sans Pro', sans-serif;
 	background-image: url('/assets/lilac.jpg');
@@ -421,12 +424,7 @@ form#new_look {
 
 /*LOOK SHOW*/
 
-.show-look, .look {
-	width: 1000px;
-	border: 1px solid black;
-	margin: auto;
-	height: 310px;
-	overflow-x: scroll; 
+.show-look, .look { 
 }
 
 .show-tags {
@@ -456,20 +454,49 @@ form#new_look {
 
 .vote {
 	width: 200px;
-	margin: 10px auto;
+	margin: 20px auto;
 }
+
 .vote-yes {
-	background-color: green;
-	padding: 5px;
-	border-radius: 5px;
+	background-color: white;
+	padding: 7px;
+	border-radius: 7px;
 	font-size: 16px;
+	border: 1px solid rgb(97, 137, 97);
+	box-shadow: 1px 1px 4px rgb(97, 137, 97);
+	cursor: pointer;
 }
 
 .vote-no {
-	background-color: red;
-	padding: 5px;
-	border-radius: 5px;
+	background-color: white;
+	padding: 7px;
+	border-radius: 7px;
 	font-size: 16px;
+	border: 1px solid rgb(189, 99, 99);
+	box-shadow: 1px 1px 4px rgb(189, 99, 99);
+	cursor: pointer;
+}
+
+.vote-yes:hover {
+	background-color: rgb(97, 137, 97);
+	color: white;
+}
+
+.vote-no:hover {
+	background-color: rgb(189, 99, 99);
+	color: white;
+}
+
+.yes {
+  background: rgb(97, 137, 97);
+  color: white;
+  border: 1px solid gold;
+}
+
+.no {
+  background: rgb(189, 99, 99); 
+  color: white;
+  border: 1px solid;
 }
 
 /*Clearfix*/
