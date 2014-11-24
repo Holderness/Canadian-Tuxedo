@@ -37,6 +37,9 @@ class UsersController < ApplicationController
 
   def login
     # handles the erb for logging in
+    if current_user
+      redirect_to clothing_items_path
+    end
   end
 
   private
