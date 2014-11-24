@@ -1,7 +1,6 @@
 <%= form_for @look do |f| %>
   <p class="look-form">
-  	<%= f.label :'Name of Look:' %><br>
-  	<%= f.text_field :name %>
+  	<%= f.text_field :name, placeholder: 'Add Look Name' %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
   </p>
 

@@ -8,7 +8,7 @@
   <%= f.file_field :image %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <p>
-  	<%= f.text_field :caption, placeholder: 'Add a Caption!' %>
+  	<%= f.text_field :caption, placeholder: 'Add a Caption' %>
   </p>
   <ul class="show-tags">
     <% @tags.each do |tag| %>

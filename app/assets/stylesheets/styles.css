@@ -407,6 +407,15 @@ input#tags {
 	font-size: 30px;	
 }
 
+input#look_name {
+	text-align: center;
+}
+
+input#tags {
+	text-align: center;
+	margin-bottom: 13px;
+}
+
 #tags {
 	width: 415px;
 	display: block;
