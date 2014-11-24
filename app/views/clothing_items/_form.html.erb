@@ -55,7 +55,14 @@
 
 	$(function() {
 
-
+    $('form').on('submit', function(e) {
+      if ($('output').children().length === 1) {
+        return true;
+      } else {
+        e.preventDefault();
+        return false;
+      };
+    });
 
     $('li').each(function(idx, tag){
       var unformatted_text = $(tag).text();
