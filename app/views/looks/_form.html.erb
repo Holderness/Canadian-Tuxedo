@@ -4,7 +4,7 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
   </p>
 
-  <p class="clothing_items">
+  <div class="clothing_items">
   <% @clothing_items.each do |clothing_item| %>
     <input type="checkbox" name="clothing_item_ids[]" id="checkbox-<%=clothing_item.id%>" value="<%=clothing_item.id%>"class="look-clothing-item-checkbox">
     
@@ -20,7 +20,7 @@
       </div>
 
   <% end %>
-  </p>
+  </div>
 
   <ul class="show-tags">
     <% @tags.each do |tag| %>
@@ -82,7 +82,7 @@
   function showClothes() {
     $clothing_items.empty();
     $.ajax({
-      url: '/looks/<%=current_user.id %>/edit',
+      url: '/looks/<%=@look.id %>/edit',
       method: 'get',
       data: {deleted_clothes: clothes_array},
       dataType: 'JSON',
@@ -133,12 +133,12 @@
     });
 
     clothes_array = [];
-    var $del = $('.look a');
+    var $del = $('.lookbook-inner div');
 
     $del.on('click', function(){
-      var id = $(this).parent().attr('id');
+      var id = $(this).attr('id');
       clothes_array.push(id);
-      $(this).parent().remove();
+      $(this).remove();
       showClothes();
     });
 
@@ -158,17 +158,17 @@
     $form.on('submit', function(e){
       if ($('input#look_name').val() === "") {
         e.preventDefault();
-        $('<div class="validation-error">Please name your look!</div>').prependTo('.new-look').hide().slideDown()
+        $('<div class="validation-error">Please name your look!</div>').prependTo('.new-look').hide().slideDown();
         setTimeout(function(){
           $('.validation-error').slideToggle(577, function() {
-            $(this).remove()
+            $(this).remove();
           });
         }, 3777);
         return false;
       } else {
         return true;
       }
-    })
+    });
 
     $form.submit(function(){
       $.each(params, function(i, param){

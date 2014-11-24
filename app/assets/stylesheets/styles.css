@@ -21,6 +21,7 @@
 
 
 
+
 body {
 	font-family: 'Source Sans Pro', sans-serif;
 	background-image: url('/assets/lilac.jpg');
@@ -431,6 +432,13 @@ form#new_look {
    cursor: pointer;
 }
 
+.lookbook-inner div {
+  float: left;
+  display: inline-block;
+  height: 285px;
+  overflow: hidden;
+}
+
 /*LOOK SHOW*/
 
 .show-look, .look { 
@@ -451,11 +459,11 @@ form#new_look {
 /*LOOK EDIT*/
 
 .look-image {
-	display: inline;
+    height: 300px;
 }
 
 .edit-look {
-	width: 1000px;
+	width: auto;
 	margin: auto;
 }
 
