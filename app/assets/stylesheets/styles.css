@@ -494,6 +494,13 @@ form#new_look {
   border: 1px solid;
 }
 
+/*TAGS*/
+
+.tags-show {
+	margin-left: 18px;
+}
+
+
 /*Clearfix*/
 
 .cf:before,

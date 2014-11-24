@@ -1,16 +1,18 @@
-<h1><%= @tag.text %></h1>
-<ul>
-  <% @clothing_items.each do |item| %>
-    <li>
+<div class="body">  
+  <h1 class="heading">
+    <%= @tag.text %>
+  </h1>
+  <div class="tags-show">
+    <% @clothing_items.each do |item| %>
       <%=link_to(item) do %>
         <%= image_tag item.image.url(:medium)%>
       <% end %>
-    </li>
-  <% end %>
-
-  <div class="inspiration"></div>
-</ul>
-
+    <% end %>
+    <div class="inspiration">
+      
+    </div>
+  </div>
+</div>
 
 <script>
     $(function(){
