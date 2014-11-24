@@ -20,6 +20,7 @@
 
 
 
+
 body {
 	font-family: 'Source Sans Pro', sans-serif;
 	background-image: url('/assets/lilac.jpg');
@@ -327,14 +328,13 @@ input#tags {
 }
 
 .closet div {
-	display: inline;
+	display: inline-block;
 }
 
 .closet img {
 	border: 1px dotted black;
-	/* margin: 2px; */
-	width: 24%;
 	float: left;
+	width: 245px;
 }
 
 /*LOOKBOOK*/
