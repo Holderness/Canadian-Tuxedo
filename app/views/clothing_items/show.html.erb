@@ -10,7 +10,7 @@
     </div>
     <div class="col2">
       <%= button_to("Edit this item!", edit_clothing_item_path(@clothing_item), method: :get, 'class' => 'edit secondary-button') %>
-      <%= link_to('or delete it from your closet', clothing_item_path(@clothing_item), method: :delete, 'class' => 'delete') %><br>
+      <%= link_to('or delete it from your closet', clothing_item_path(@clothing_item), method: :delete, 'class' => 'delete', data: { confirm: 'Are you sure?' }) %><br>
 
       <ul class="show-tags">
       	<% @tags.each do |tag| %>
