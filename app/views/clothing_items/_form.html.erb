@@ -60,6 +60,12 @@
         return true;
       } else {
         e.preventDefault();
+        $('<div class="validation-error">Please choose a file!</div>').prependTo('.add-image').hide().slideDown()
+        setTimeout(function(){
+          $('.validation-error').slideToggle(577, function() {
+            $(this).remove()
+          });
+        }, 3777);
         return false;
       };
     });
