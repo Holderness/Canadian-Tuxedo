@@ -74,6 +74,9 @@ class LooksController < ApplicationController
     @look = Look.find(params[:id])
     @clothing_items = @look.clothing_items
     @tags = @look.tags
+    downvotes = Vote.where(look_id: @look.id, vote: -1).count
+    upvotes = Vote.where(look_id: @look.id, vote: 1).count
+    @total_votes = upvotes - downvotes
   end
 
   def destroy
