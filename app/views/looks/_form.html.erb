@@ -99,6 +99,8 @@
 
   $(function() {
 
+
+
     $clothing_items = $('.clothing_items');
 
 
@@ -151,6 +153,22 @@
     ];
 
     var $form = $('form');
+
+    $form.on('submit', function(e){
+      if ($('input#look_name').val() === "") {
+        e.preventDefault();
+        $('<div class="validation-error">Please name your look!</div>').prependTo('.new-look').hide().slideDown()
+        setTimeout(function(){
+          $('.validation-error').slideToggle(577, function() {
+            $(this).remove()
+          });
+        }, 3777);
+        return false;
+      } else {
+        return true;
+      }
+    })
+
     $form.submit(function(){
       $.each(params, function(i, param){
         $('<input />').attr('type', 'hidden')
