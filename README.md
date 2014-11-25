@@ -20,7 +20,7 @@ Users of Juxtapose will be able to:
 
 Upon opening the application, the Home Page will allow a new user to register with their username and password. 
 
-[!Registration Page](https://s3.amazonaws.com/uploads.hipchat.com/39979/1148953/gdombypSt6QeZJZ/Screen%20Shot%202014-11-24%20at%208.28.55%20PM.png)
+![Registration Page](https://s3.amazonaws.com/uploads.hipchat.com/39979/1148953/gdombypSt6QeZJZ/Screen%20Shot%202014-11-24%20at%208.28.55%20PM.png)
 
 Once an account has been created, you will be able to navigate the site, using the nav bar at the top. 
 
