@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
 
 
-
+# AJM: Great! I'd want to see some of these behaviors moving out to the models they belong to and/or to module helpers.  For example, what do you think about writing a Flickr module.  Then here you could call something like.  Flickr.by_tags('blue') intead of seeing all the HTTParty here.    What do you thinK?
   def show_clothing
     tag_id = params[:id]
     @tag = Tag.find(tag_id)

@@ -19,7 +19,7 @@
 
 
 
-
+/* Might make sense to break these up into different files and edit the manifest.  Also, consider moving to scss, so you can better namespace.  */
 
 
 body {
@@ -54,7 +54,7 @@ output {
 	height: auto;
 	padding: 5px 0;
 	background: rgb(255,255,255);
-	position: absolute;
+	position: absolute;   /* Can we do positioning without absolute here? */
 	top: 0%;
 	left: 0%;
 	width: 100%;
@@ -319,7 +319,7 @@ input#tags {
 }
 
 .closet-link a {
-	text-decoration: none;	
+	text-decoration: none;
 }
 
 .closet {
@@ -405,7 +405,7 @@ input#tags {
 }
 
 .save-look input {
-	font-size: 30px;	
+	font-size: 30px;
 }
 
 input#look_name {
@@ -441,7 +441,7 @@ form#new_look {
 
 /*LOOK SHOW*/
 
-.show-look, .look { 
+.show-look, .look {
 }
 
 .show-tags {
@@ -511,7 +511,7 @@ form#new_look {
 }
 
 .no {
-  background: rgb(189, 99, 99); 
+  background: rgb(189, 99, 99);
   color: white;
   border: 1px solid;
 }

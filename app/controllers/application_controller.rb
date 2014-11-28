@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  require 'uri'
+  require 'uri'  # ? Where is this used?
 
   def authorize
     redirect_to root_path unless current_user

@@ -21,6 +21,7 @@ class ClothingItemsController < ApplicationController
     @tags = @clothing_item.tags
   end
 
+  # AJM:  I'd sugest   
   def update
     clothing_item = ClothingItem.find(params[:id])
     tags_from_server = params[:tags].split(",")

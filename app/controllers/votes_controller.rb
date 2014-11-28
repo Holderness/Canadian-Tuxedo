@@ -15,7 +15,7 @@ class VotesController < ApplicationController
     end
 
 
-
+		#  AJM:  If we requests html, I expect this would be skipped and the default behavior would be attempted... i.e try to render a gallery_vote.html.erb. 
     respond_to do |format|
       format.json {render :nothing => true}
     end
